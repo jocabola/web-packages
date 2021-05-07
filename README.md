@@ -9,8 +9,8 @@ It might remain undocumented for a long while but feel free to try it out!
 
 | Package | Description |
 |:--|:--|
-| [@jocabola/assets](https://www.npmjs.com/package/@jocabola/assets) | Utilities for assets and data loading. |
 | [@jocabola/gfx](https://www.npmjs.com/package/@jocabola/gfx) | Utilities & toolkit on top of WebGL/ThreeJS. |
+| [@jocabola/io](https://www.npmjs.com/package/@jocabola/io) | Utilities for assets and data loading. |
 | [@jocabola/math](https://www.npmjs.com/package/@jocabola/math) | Math utils, Random + lightweight Vector class for phy. |
 | [@jocabola/phy](https://www.npmjs.com/package/@jocabola/phy) | Verlet Physics library. |
 | [@jocabola/utils](https://www.npmjs.com/package/@jocabola/utils) | Misc utils for web. |
