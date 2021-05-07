@@ -1,0 +1,25 @@
+{
+  "name": "@jocabola/phy",
+  "version": "0.1.7",
+  "description": "Verlet Physics Package written in TypeScript",
+  "main": "lib/main.js",
+  "repository": "git@github.com:jocabola/web-packages.git",
+	"homepage": "https://github.com/jocabola/web-packages/phy",
+  "author": "Edu Prats <hello@eduprats.com>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc --build tsconfig.phy.json"
+  },
+  "files": [
+    "lib",
+    "examples",
+    "README.md"
+  ],
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "@jocabola/math": "^0.1.6"
+  }
+}

@@ -1,0 +1,25 @@
+{
+	"name": "@jocabola/assets",
+	"version": "0.1.0",
+	"description": "Web Assets Package written in TypeScript",
+	"main": "lib/main.js",
+	"repository": "git@github.com:jocabola/web-packages.git",
+	"homepage": "https://github.com/jocabola/web-packages/assets",
+	"author": "Edu Prats <hello@eduprats.com>",
+	"license": "Apache-2.0",
+	"scripts": {
+		"prepare": "yarn build",
+		"build": "tsc --build tsconfig.io.json"
+	},
+	"files": [
+		"lib",
+		"examples",
+		"README.md"
+	],
+	"devDependencies": {
+		"typescript": "^4.2.3"
+	},
+	"dependencies": {
+		"three": "^0.126.1"
+	}
+}

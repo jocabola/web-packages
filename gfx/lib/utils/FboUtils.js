@@ -1,0 +1,26 @@
+import { ClampToEdgeWrapping, DepthTexture, LinearFilter, RGBFormat, UnsignedByteType, UnsignedShortType, WebGLRenderTarget } from "three";
+import FBOHelper from "./FboHelper";
+export default class FboUtils {
+    static getRenderTarget(width, height, settings = {}, depth = false) {
+        const target = new WebGLRenderTarget(width, height, {
+            minFilter: settings.minFilter !== undefined ? settings.minFilter : LinearFilter,
+            magFilter: settings.magFilter !== undefined ? settings.magFilter : LinearFilter,
+            wrapS: settings.wrapS !== undefined ? settings.wrapS : ClampToEdgeWrapping,
+            wrapT: settings.wrapT !== undefined ? settings.wrapT : ClampToEdgeWrapping,
+            format: settings.format ? settings.format : RGBFormat,
+            type: settings.type !== undefined ? settings.type : UnsignedByteType,
+            stencilBuffer: settings.stencilBuffer !== undefined ? settings.stencilBuffer : true
+        });
+        if (depth) {
+            target.depthTexture = new DepthTexture(width, height, UnsignedShortType);
+        }
+        return target;
+    }
+    static drawFbo(fbo, renderer, x = 0, y = 0, width = 0, height = 0) {
+        FboUtils.helper.render(fbo, renderer, x, y, width, height);
+    }
+    static renderToFbo(fbo, renderer, material) {
+        FboUtils.helper.renderToFbo(fbo, renderer, material);
+    }
+}
+FboUtils.helper = new FBOHelper();

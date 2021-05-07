@@ -1,0 +1,8 @@
+{
+  "name": "web-packages",
+  "version": "0.1.0",
+  "description": "A series of packages for web based work.",
+  "author": "Edu Prats <hello@eduprats.com>",
+  "license": "Apache-2.0",
+  "private": true
+}

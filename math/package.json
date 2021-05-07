@@ -1,0 +1,25 @@
+{
+  "name": "@jocabola/math",
+  "version": "0.2.0",
+  "description": "Math Package in TypeScript. Part of jocabola/web packages",
+  "repository": "git@github.com:jocabola/web-packages.git",
+	"homepage": "https://github.com/jocabola/web-packages/math",
+  "author": "Edu Prats <hello@eduprats.com>",
+  "license": "Apache-2.0",
+  "main": "lib/main.js",
+  "typings": "lib/main.d.ts",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc --build tsconfig.math.json"
+  },
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "dependencies": {
+    "mersenne": "^0.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  }
+}
