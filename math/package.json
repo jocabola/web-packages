@@ -1,9 +1,9 @@
 {
   "name": "@jocabola/math",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Math Package in TypeScript. Part of jocabola/web packages",
   "repository": "git@github.com:jocabola/web-packages.git",
-	"homepage": "https://github.com/jocabola/web-packages/math",
+	"homepage": "https://github.com/jocabola/web-packages/tree/master/math",
   "author": "Edu Prats <hello@eduprats.com>",
   "license": "Apache-2.0",
   "main": "lib/main.js",

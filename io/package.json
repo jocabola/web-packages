@@ -1,10 +1,10 @@
 {
 	"name": "@jocabola/io",
-	"version": "0.1.92",
+	"version": "0.1.93",
 	"description": "Web Assets Package written in TypeScript",
 	"main": "lib/main.js",
 	"repository": "git@github.com:jocabola/web-packages.git",
-	"homepage": "https://github.com/jocabola/web-packages/io",
+	"homepage": "https://github.com/jocabola/web-packages/tree/master/io",
 	"author": "Edu Prats <hello@eduprats.com>",
 	"license": "Apache-2.0",
 	"scripts": {

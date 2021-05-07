@@ -1,10 +1,10 @@
 {
   "name": "@jocabola/phy",
-  "version": "0.1.7",
+  "version": "0.1.71",
   "description": "Verlet Physics Package written in TypeScript",
   "main": "lib/main.js",
   "repository": "git@github.com:jocabola/web-packages.git",
-	"homepage": "https://github.com/jocabola/web-packages/phy",
+	"homepage": "https://github.com/jocabola/web-packages/tree/master/phy",
   "author": "Edu Prats <hello@eduprats.com>",
   "license": "Apache-2.0",
   "scripts": {

@@ -1,10 +1,10 @@
 {
 	"name": "@jocabola/utils",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "Web Utils Package written in TypeScript",
 	"main": "lib/main.js",
 	"repository": "git@github.com:jocabola/web-packages.git",
-	"homepage": "https://github.com/jocabola/web-packages/utils",
+	"homepage": "https://github.com/jocabola/web-packages/tree/master/utils",
 	"author": "Edu Prats <hello@eduprats.com>",
 	"license": "MIT",
 	"scripts": {
