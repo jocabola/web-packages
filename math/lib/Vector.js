@@ -77,6 +77,15 @@ var Vec = (function () {
     Vec.prototype.distanceTo = function (v) {
         return this.clone().sub(v).length();
     };
+    Vec.prototype.normalize = function () {
+        var L = this.length();
+        if (L == 0)
+            return this;
+        this.x /= L;
+        this.y /= L;
+        this.z /= L;
+        return this;
+    };
     return Vec;
 }());
 exports.default = Vec;

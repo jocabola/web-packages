@@ -98,4 +98,15 @@ export default class Vec {
 	distanceTo(v:Vec):number {
 		return this.clone().sub(v).length();
 	}
+
+	normalize():Vec {
+		const L = this.length();
+		if(L == 0) return this;
+
+		this.x /= L;
+		this.y /= L;
+		this.z /= L;
+
+		return this;
+	}
 }

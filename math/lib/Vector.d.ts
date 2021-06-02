@@ -16,4 +16,5 @@ export default class Vec {
     equals(v: Vec): boolean;
     dot(v: Vec): number;
     distanceTo(v: Vec): number;
+    normalize(): Vec;
 }
