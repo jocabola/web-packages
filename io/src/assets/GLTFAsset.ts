@@ -1,6 +1,8 @@
 import Asset from './Asset';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 
+const loader = new GLTFLoader();
+
 export default class GLTFAsset extends Asset {
 	constructor(url:string) {
 		super(url);
@@ -9,7 +11,6 @@ export default class GLTFAsset extends Asset {
 	load(callback?:Function) {
 		// console.log("Loading", this.url);
 		let url = this.url;
-		let loader = new GLTFLoader();
 		loader.load(
 		// resource URL
 		this.url,

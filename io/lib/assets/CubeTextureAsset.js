@@ -1,6 +1,7 @@
 import Asset from "./Asset";
 import { CubeTextureLoader } from 'three';
 import { TextureUtils } from "../utils/TextureUtils";
+const loader = new CubeTextureLoader();
 export default class CubeTextureAsset extends Asset {
     constructor(url, frmt = "jpg", opts) {
         super(url);
@@ -8,7 +9,6 @@ export default class CubeTextureAsset extends Asset {
         this.options = opts;
     }
     load(callback) {
-        let loader = CubeTextureLoader();
         loader.setPath(this.url);
         loader.load([
             'px.' + this.format,

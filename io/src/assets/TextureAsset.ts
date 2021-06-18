@@ -2,6 +2,8 @@ import { Texture, TextureLoader } from 'three';
 import { TextureOptions, TextureUtils } from '../utils/TextureUtils';
 import Asset from "./Asset";
 
+const loader = new TextureLoader();
+
 export default class TextureAsset extends Asset {
 	options:TextureOptions;
 	content:Texture;
@@ -11,7 +13,6 @@ export default class TextureAsset extends Asset {
 	}
 	load(callback = null) {
 		// console.log( "Loading", this.url );
-		let loader = new TextureLoader();
 		loader.load(
 			this.url,
 			(texture:Texture) => {

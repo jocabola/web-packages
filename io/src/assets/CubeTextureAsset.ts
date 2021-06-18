@@ -4,6 +4,8 @@ import { TextureOptions, TextureUtils } from "../utils/TextureUtils";
 
 type ImgExt = 'jpg'|'png'|'dds';
 
+const loader = new CubeTextureLoader();
+
 export default class CubeTextureAsset extends Asset {
 	content:CubeTexture;
 	format:ImgExt;
@@ -16,7 +18,6 @@ export default class CubeTextureAsset extends Asset {
 
 	load(callback?:Function) {
 		// console.log("Loading", this.url);
-		let loader = CubeTextureLoader();
 		loader.setPath(this.url);
 		loader.load([
 			'px.'+this.format,

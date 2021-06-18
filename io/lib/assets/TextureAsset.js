@@ -1,13 +1,13 @@
 import { TextureLoader } from 'three';
 import { TextureUtils } from '../utils/TextureUtils';
 import Asset from "./Asset";
+const loader = new TextureLoader();
 export default class TextureAsset extends Asset {
     constructor(url, opts = {}) {
         super(url, false);
         this.options = opts;
     }
     load(callback = null) {
-        let loader = new TextureLoader();
         loader.load(this.url, (texture) => {
             this.content = texture;
             TextureUtils.applyTextureOptions(texture, this.options);

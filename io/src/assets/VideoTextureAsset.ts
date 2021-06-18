@@ -1,4 +1,4 @@
-import {VideoTexture, RGBFormat} from 'three';
+import { VideoTexture } from 'three';
 import { TextureOptions, TextureUtils } from '../utils/TextureUtils';
 import Asset from "./Asset";
 
@@ -53,5 +53,11 @@ export default class VideoTextureAsset extends Asset {
 	destroy() {
 		this.content.dispose();
 		this.content = null;
+	}
+
+	update() {
+		if(!this.loaded) return;
+		const video = this.content.image;
+		if(video.readyState > 2 && !video.paused) this.content.needsUpdate = true;
 	}
 }

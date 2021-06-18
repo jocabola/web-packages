@@ -8,4 +8,5 @@ export default class VideoTextureAsset extends Asset {
     constructor(url: string, loop?: boolean, options?: TextureOptions);
     load(callback?: Function): void;
     destroy(): void;
+    update(): void;
 }

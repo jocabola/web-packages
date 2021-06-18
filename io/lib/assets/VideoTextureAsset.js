@@ -43,4 +43,11 @@ export default class VideoTextureAsset extends Asset {
         this.content.dispose();
         this.content = null;
     }
+    update() {
+        if (!this.loaded)
+            return;
+        const video = this.content.image;
+        if (video.readyState > 2 && !video.paused)
+            this.content.needsUpdate = true;
+    }
 }
