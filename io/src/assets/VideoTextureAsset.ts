@@ -24,6 +24,7 @@ export default class VideoTextureAsset extends Asset {
 
 		let finish = () => {
 			if (this.loaded) return;
+			// To-Do: implement custom video texture with update routine
 			this.content = new VideoTexture(video);
 			TextureUtils.applyTextureOptions(this.content,this.options);
 			if (callback != null) callback();
