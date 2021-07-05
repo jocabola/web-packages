@@ -65,7 +65,7 @@ var Vec = (function () {
     Vec.prototype.lerp = function (target, alpha) {
         this.x = MathUtils_1.default.lerp(this.x, target.x, alpha);
         this.y = MathUtils_1.default.lerp(this.y, target.y, alpha);
-        this.z = MathUtils_1.default.lerp(this.y, target.z, alpha);
+        this.z = MathUtils_1.default.lerp(this.z, target.z, alpha);
         return this;
     };
     Vec.prototype.equals = function (v) {

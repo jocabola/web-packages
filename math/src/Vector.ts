@@ -82,7 +82,7 @@ export default class Vec {
 	lerp(target:Vec, alpha:number):Vec {
 		this.x = MathUtils.lerp(this.x, target.x, alpha);
 		this.y = MathUtils.lerp(this.y, target.y, alpha);
-		this.z = MathUtils.lerp(this.y, target.z, alpha);
+		this.z = MathUtils.lerp(this.z, target.z, alpha);
 
 		return this;
 	}
