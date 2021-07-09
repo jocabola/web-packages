@@ -1,19 +1,24 @@
 import { Texture, TextureLoader } from 'three';
 import { TextureOptions, TextureUtils } from '../utils/TextureUtils';
 import Asset from "./Asset";
+import DDSTextureLoader from 'three/examples/jsm/loaders/DDSLoader';
 
 const loader = new TextureLoader();
+const compLoader = new DDSTextureLoader();
 
 export default class TextureAsset extends Asset {
 	options:TextureOptions;
 	content:Texture;
-	constructor(url:string, opts:TextureOptions={}) {
+	isCompressed:boolean;
+	constructor(url:string, opts:TextureOptions={}, compressed:boolean=false) {
 		super(url, false);
 		this.options = opts;
+		this.isCompressed = compressed;
 	}
 	load(callback = null) {
 		// console.log( "Loading", this.url );
-		loader.load(
+		const L = this.isCompressed ? compLoader : loader;
+		L.load(
 			this.url,
 			(texture:Texture) => {
 				this.content = texture;
