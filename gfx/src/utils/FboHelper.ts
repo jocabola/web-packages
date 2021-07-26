@@ -51,8 +51,8 @@ export default class FboUtils {
 	}
 
 	renderToFbo(target:WebGLRenderTarget, renderer:WebGLRenderer, material:Material) {
-		let s = new Vector2();
-		renderer.getSize(s);
+		let s = new Vector2(target.width, target.height);
+		// renderer.getSize(s);
 		
 		this.camera.left = -s.width / 2;
 		this.camera.right = s.width / 2;
@@ -66,6 +66,7 @@ export default class FboUtils {
 		renderer.setRenderTarget(target);
 		//renderer.clearDepth();
 		renderer.render(this.scene, this.camera);
+		renderer.setRenderTarget(null);
 	}
 
 	dispose() {
