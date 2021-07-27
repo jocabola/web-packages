@@ -22,6 +22,9 @@ export default class FboUtils {
     static drawMRT(mrt, renderer, index, x = 0, y = 0, width = 0, height = 0) {
         FboUtils.helper.renderMRT(mrt, renderer, index, x, y, width, height);
     }
+    static drawTexture(texture, renderer, x = 0, y = 0, width = 0, height = 0) {
+        FboUtils.helper.drawTexture(texture, renderer, x, y, width, height);
+    }
     static renderToFbo(fbo, renderer, material) {
         FboUtils.helper.renderToFbo(fbo, renderer, material);
     }

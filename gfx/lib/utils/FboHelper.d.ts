@@ -1,5 +1,5 @@
 import { Mesh, OrthographicCamera, RawShaderMaterial, Scene, WebGLRenderTarget, WebGLRenderer, Material, WebGLMultipleRenderTargets, Texture } from 'three';
-export default class FboUtils {
+export default class FboHelper {
     camera: OrthographicCamera;
     material: RawShaderMaterial;
     quad: Mesh;
