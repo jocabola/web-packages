@@ -10,7 +10,7 @@ const MAT:RawShaderMaterial = new RawShaderMaterial({
 	}
 });
 
-export default class FboUtils {
+export default class FboHelper {
 	camera:OrthographicCamera
 	material:RawShaderMaterial
 	quad:Mesh
@@ -46,17 +46,20 @@ export default class FboUtils {
 	}
 
 	drawTexture(texture:Texture, renderer:WebGLRenderer, x:number=0, y:number=0, width:number=0, height:number=0) {
-		this.camera.left = -width / 2;
-		this.camera.right = width / 2;
-		this.camera.top = height / 2;
-		this.camera.bottom = -height / 2;
+		const s = new Vector2();
+		renderer.getSize(s);
+
+		this.camera.left = -s.width / 2;
+		this.camera.right = s.width / 2;
+		this.camera.top = s.height / 2;
+		this.camera.bottom = -s.height / 2;
 		this.camera.updateProjectionMatrix();
 
 		this.quad.scale.set(width, height, 1);
-		this.quad.position.set(-width / 2 + width / 2 + x, height / 2 - height / 2 - y, 0);
+		this.quad.position.set(-s.width / 2 + width / 2 + x, s.height / 2 - height / 2 - y, 0);
 		this.quad.material = this.material;
 		this.material.uniforms.tInput.value = texture;
-		this.material.transparent = texture.format == RGBAFormat;
+		this.material.transparent = false;//texture.format == RGBAFormat;
 		//renderer.clearDepth();
 		renderer.render(this.scene, this.camera);
 	}
