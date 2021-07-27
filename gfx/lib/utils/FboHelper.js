@@ -22,23 +22,30 @@ export default class FboUtils {
             width = target.width;
             height = target.height;
         }
-        let s = new Vector2();
-        renderer.getSize(s);
-        this.camera.left = -s.width / 2;
-        this.camera.right = s.width / 2;
-        this.camera.top = s.height / 2;
-        this.camera.bottom = -s.height / 2;
+        this.drawTexture(target.texture, renderer, x, y, width, height);
+    }
+    renderMRT(target, renderer, index, x = 0, y = 0, width = 0, height = 0) {
+        if (width == 0 || height == 0) {
+            width = target.width;
+            height = target.height;
+        }
+        this.drawTexture(target.texture[index], renderer, x, y, width, height);
+    }
+    drawTexture(texture, renderer, x = 0, y = 0, width = 0, height = 0) {
+        this.camera.left = -width / 2;
+        this.camera.right = width / 2;
+        this.camera.top = height / 2;
+        this.camera.bottom = -height / 2;
         this.camera.updateProjectionMatrix();
         this.quad.scale.set(width, height, 1);
-        this.quad.position.set(-s.width / 2 + width / 2 + x, s.height / 2 - height / 2 - y, 0);
+        this.quad.position.set(-width / 2 + width / 2 + x, height / 2 - height / 2 - y, 0);
         this.quad.material = this.material;
-        this.material.uniforms.tInput.value = target.texture;
-        this.material.transparent = target.texture.format == RGBAFormat;
+        this.material.uniforms.tInput.value = texture;
+        this.material.transparent = texture.format == RGBAFormat;
         renderer.render(this.scene, this.camera);
     }
     renderToFbo(target, renderer, material) {
-        let s = new Vector2();
-        renderer.getSize(s);
+        let s = new Vector2(target.width, target.height);
         this.camera.left = -s.width / 2;
         this.camera.right = s.width / 2;
         this.camera.top = s.height / 2;
@@ -49,6 +56,7 @@ export default class FboUtils {
         this.quad.material = material;
         renderer.setRenderTarget(target);
         renderer.render(this.scene, this.camera);
+        renderer.setRenderTarget(null);
     }
     dispose() {
         this.quad.geometry.dispose();

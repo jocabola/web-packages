@@ -1,4 +1,4 @@
-import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Material, RGBFormat, UnsignedByteType, UnsignedShortType, WebGLRenderer, WebGLRenderTarget, WebGLRenderTargetOptions } from "three";
+import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Material, RGBFormat, UnsignedByteType, UnsignedShortType, WebGLMultipleRenderTargets, WebGLRenderer, WebGLRenderTarget, WebGLRenderTargetOptions } from "three";
 import FBOHelper from "./FboHelper";
 
 export default class FboUtils {
@@ -26,7 +26,11 @@ export default class FboUtils {
 		FboUtils.helper.render(fbo, renderer, x, y, width, height);
 	}
 
-	static renderToFbo(fbo:WebGLRenderTarget, renderer:WebGLRenderer, material:Material) {
+	static drawMRT(mrt:WebGLMultipleRenderTargets, renderer:WebGLRenderer, index:number, x:number=0, y:number=0, width:number=0, height:number=0) {
+		FboUtils.helper.renderMRT(mrt, renderer, x, y, width, height);
+	}
+
+	static renderToFbo(fbo:WebGLRenderTarget|WebGLMultipleRenderTargets, renderer:WebGLRenderer, material:Material) {
 		FboUtils.helper.renderToFbo(fbo, renderer, material);
 	}
 }
