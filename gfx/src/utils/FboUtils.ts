@@ -27,7 +27,7 @@ export default class FboUtils {
 	}
 
 	static drawMRT(mrt:WebGLMultipleRenderTargets, renderer:WebGLRenderer, index:number, x:number=0, y:number=0, width:number=0, height:number=0) {
-		FboUtils.helper.renderMRT(mrt, renderer, x, y, width, height);
+		FboUtils.helper.renderMRT(mrt, renderer, index, x, y, width, height);
 	}
 
 	static renderToFbo(fbo:WebGLRenderTarget|WebGLMultipleRenderTargets, renderer:WebGLRenderer, material:Material) {
