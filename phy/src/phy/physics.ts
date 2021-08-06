@@ -74,6 +74,7 @@ class Emitter {
 				this.physics.addParticle(p);
 			}
 		}
+		this.timer++;
 	}
 	
 	// extend this if required

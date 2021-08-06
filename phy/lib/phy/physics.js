@@ -39,6 +39,7 @@ var Emitter = (function () {
                 this.physics.addParticle(p);
             }
         }
+        this.timer++;
     };
     Emitter.prototype.create = function () {
         return new particle_1.Particle(this.id++);
