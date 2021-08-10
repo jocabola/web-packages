@@ -19,7 +19,7 @@ export default class glInfo {
 	halfFloatRenderTarget:boolean
 	fullFloatRenderTarget:boolean
 	
-	private constructor(gl:WebGL2RenderingContext|WebGLRenderingContext) {
+	constructor(gl:WebGL2RenderingContext|WebGLRenderingContext) {
 		this.gl = gl;
 
 		const glExtensionDebugRendererInfo = gl.getExtension('WEBGL_debug_renderer_info');

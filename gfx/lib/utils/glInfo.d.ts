@@ -12,7 +12,7 @@ export default class glInfo {
     vendor: string;
     halfFloatRenderTarget: boolean;
     fullFloatRenderTarget: boolean;
-    private constructor();
+    constructor(gl: WebGL2RenderingContext | WebGLRenderingContext);
     checkRenderTargetSupport(format: number, type: number): boolean;
     crapGPU(): boolean;
     isModernAppleGPU(): boolean;
