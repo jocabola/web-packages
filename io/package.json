@@ -1,6 +1,6 @@
 {
 	"name": "@jocabola/io",
-	"version": "0.2.4",
+	"version": "0.2.6",
 	"description": "Web Assets Package written in TypeScript",
 	"main": "lib/main.js",
 	"repository": "git@github.com:jocabola/web-packages.git",
