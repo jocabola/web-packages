@@ -5,9 +5,9 @@ export default class FboHelper {
     quad: Mesh;
     scene: Scene;
     constructor();
-    render(target: WebGLRenderTarget, renderer: WebGLRenderer, x?: number, y?: number, width?: number, height?: number): void;
+    render(target: WebGLRenderTarget, renderer: WebGLRenderer, x?: number, y?: number, width?: number, height?: number, opacity?: number): void;
     renderMRT(target: WebGLMultipleRenderTargets, renderer: WebGLRenderer, index: number, x?: number, y?: number, width?: number, height?: number): void;
-    drawTexture(texture: Texture, renderer: WebGLRenderer, x?: number, y?: number, width?: number, height?: number): void;
+    drawTexture(texture: Texture, renderer: WebGLRenderer, x?: number, y?: number, width?: number, height?: number, opacity?: number): void;
     renderToFbo(target: WebGLRenderTarget | WebGLMultipleRenderTargets, renderer: WebGLRenderer, material: Material): void;
     dispose(): void;
 }

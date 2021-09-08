@@ -6,7 +6,8 @@ const MAT:RawShaderMaterial = new RawShaderMaterial({
 	vertexShader: vert,
 	fragmentShader: frag,
 	uniforms: {
-		tInput: { value: null }
+		tInput: { value: null },
+		opacity: {value: 1}
 	}
 });
 
@@ -25,14 +26,14 @@ export default class FboHelper {
 		this.scene.add(this.quad);
 	}
 
-	render(target:WebGLRenderTarget, renderer:WebGLRenderer, x:number=0, y:number=0, width:number=0, height:number=0) {
+	render(target:WebGLRenderTarget, renderer:WebGLRenderer, x:number=0, y:number=0, width:number=0, height:number=0, opacity:number=1) {
 		// render FBO to screen
 		if (width == 0 || height == 0) {
 			width = target.width;
 			height = target.height;
 		}
 
-		this.drawTexture(target.texture, renderer, x, y, width, height);
+		this.drawTexture(target.texture, renderer, x, y, width, height, opacity);
 	}
 
 	renderMRT(target:WebGLMultipleRenderTargets, renderer:WebGLRenderer, index:number, x:number=0, y:number=0, width:number=0, height:number=0) {
@@ -45,7 +46,7 @@ export default class FboHelper {
 		this.drawTexture(target.texture[index], renderer, x, y, width, height);
 	}
 
-	drawTexture(texture:Texture, renderer:WebGLRenderer, x:number=0, y:number=0, width:number=0, height:number=0) {
+	drawTexture(texture:Texture, renderer:WebGLRenderer, x:number=0, y:number=0, width:number=0, height:number=0, opacity:number=1) {
 		const s = new Vector2();
 		renderer.getSize(s);
 
@@ -59,7 +60,8 @@ export default class FboHelper {
 		this.quad.position.set(-s.width / 2 + width / 2 + x, s.height / 2 - height / 2 - y, 0);
 		this.quad.material = this.material;
 		this.material.uniforms.tInput.value = texture;
-		this.material.transparent = false;//texture.format == RGBAFormat;
+		this.material.transparent = texture.format == RGBAFormat;
+		this.material.uniforms.opacity.value = opacity;
 		//renderer.clearDepth();
 		renderer.render(this.scene, this.camera);
 	}

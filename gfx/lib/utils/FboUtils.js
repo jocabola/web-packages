@@ -16,14 +16,14 @@ export default class FboUtils {
         }
         return target;
     }
-    static drawFbo(fbo, renderer, x = 0, y = 0, width = 0, height = 0) {
-        FboUtils.helper.render(fbo, renderer, x, y, width, height);
+    static drawFbo(fbo, renderer, x = 0, y = 0, width = 0, height = 0, opacity = 1) {
+        FboUtils.helper.render(fbo, renderer, x, y, width, height, opacity);
     }
     static drawMRT(mrt, renderer, index, x = 0, y = 0, width = 0, height = 0) {
         FboUtils.helper.renderMRT(mrt, renderer, index, x, y, width, height);
     }
-    static drawTexture(texture, renderer, x = 0, y = 0, width = 0, height = 0) {
-        FboUtils.helper.drawTexture(texture, renderer, x, y, width, height);
+    static drawTexture(texture, renderer, x = 0, y = 0, width = 0, height = 0, opacity = 1) {
+        FboUtils.helper.drawTexture(texture, renderer, x, y, width, height, opacity);
     }
     static renderToFbo(fbo, renderer, material) {
         FboUtils.helper.renderToFbo(fbo, renderer, material);

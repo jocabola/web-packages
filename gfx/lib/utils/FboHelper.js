@@ -1,11 +1,12 @@
-import { Mesh, OrthographicCamera, PlaneBufferGeometry, RawShaderMaterial, Scene, Vector2 } from 'three';
+import { Mesh, OrthographicCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, Vector2 } from 'three';
 import vert from '../glsl/fbo.vert';
 import frag from '../glsl/fbo.frag';
 const MAT = new RawShaderMaterial({
     vertexShader: vert,
     fragmentShader: frag,
     uniforms: {
-        tInput: { value: null }
+        tInput: { value: null },
+        opacity: { value: 1 }
     }
 });
 export default class FboHelper {
@@ -17,12 +18,12 @@ export default class FboHelper {
         this.scene = new Scene();
         this.scene.add(this.quad);
     }
-    render(target, renderer, x = 0, y = 0, width = 0, height = 0) {
+    render(target, renderer, x = 0, y = 0, width = 0, height = 0, opacity = 1) {
         if (width == 0 || height == 0) {
             width = target.width;
             height = target.height;
         }
-        this.drawTexture(target.texture, renderer, x, y, width, height);
+        this.drawTexture(target.texture, renderer, x, y, width, height, opacity);
     }
     renderMRT(target, renderer, index, x = 0, y = 0, width = 0, height = 0) {
         if (width == 0 || height == 0) {
@@ -31,7 +32,7 @@ export default class FboHelper {
         }
         this.drawTexture(target.texture[index], renderer, x, y, width, height);
     }
-    drawTexture(texture, renderer, x = 0, y = 0, width = 0, height = 0) {
+    drawTexture(texture, renderer, x = 0, y = 0, width = 0, height = 0, opacity = 1) {
         const s = new Vector2();
         renderer.getSize(s);
         this.camera.left = -s.width / 2;
@@ -43,7 +44,8 @@ export default class FboHelper {
         this.quad.position.set(-s.width / 2 + width / 2 + x, s.height / 2 - height / 2 - y, 0);
         this.quad.material = this.material;
         this.material.uniforms.tInput.value = texture;
-        this.material.transparent = false;
+        this.material.transparent = texture.format == RGBAFormat;
+        this.material.uniforms.opacity.value = opacity;
         renderer.render(this.scene, this.camera);
     }
     renderToFbo(target, renderer, material) {
