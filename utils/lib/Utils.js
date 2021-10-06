@@ -71,7 +71,7 @@ var Utils = (function () {
         return ua.indexOf('ipad') > -1 || (ua.indexOf('macintosh') > -1 && 'ontouchend' in document);
     };
     Utils.isDesktop = function () {
-        return !Utils.isIpad() && !Utils.isIphone() && !Utils.getAndroidVersion();
+        return !Utils.isIpad() && !Utils.isIphone() && Utils.getAndroidVersion() === -1;
     };
     Utils.isTouchDevice = function () {
         return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);

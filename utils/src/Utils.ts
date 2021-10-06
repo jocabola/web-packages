@@ -88,7 +88,7 @@ export default class Utils {
 	}
 
 	static isDesktop():boolean {
-		return !Utils.isIpad() && !Utils.isIphone() && !Utils.getAndroidVersion();
+		return !Utils.isIpad() && !Utils.isIphone() && Utils.getAndroidVersion() === -1;
 	}
 
     static isTouchDevice ():boolean {

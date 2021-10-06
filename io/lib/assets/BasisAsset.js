@@ -11,6 +11,8 @@ export default class BasisAsset extends TextureAsset {
         super(url, opts);
     }
     load(callback = null) {
+        if (this._loaded)
+            return;
         basisLoader.load(this.url, (texture) => {
             texture.encoding = sRGBEncoding;
             this.content = texture;
