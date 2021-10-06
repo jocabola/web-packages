@@ -19,7 +19,10 @@ export default class VideoTextureAsset extends Asset {
 		video.crossOrigin = 'anonymous';
 		video.autoplay = true;
 		video.muted = true;
-		video.style.display = 'none';
+		// video.style.display = 'none';
+		video.setAttribute('playsinline', 'true');
+		video.setAttribute('webkitPlaysInline', 'true');
+		video.style.opacity = '0';
 		document.body.appendChild(video);
 
 		let finish = () => {
@@ -30,7 +33,7 @@ export default class VideoTextureAsset extends Asset {
 			if (callback != null) callback();
 			// video.play();
 			this._loaded = true;
-			document.body.removeChild(video);
+			// document.body.removeChild(video);
 		};
 
 		video.addEventListener('error', (event) => {
