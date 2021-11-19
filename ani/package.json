@@ -1,0 +1,23 @@
+{
+	"name": "@jocabola/ani",
+	"version": "0.0.1",
+	"description": "Animation Package written in TypeScript",
+	"main": "lib/main.js",
+	"repository": "git@github.com:jocabola/web-packages.git",
+	"homepage": "https://github.com/jocabola/web-packages/tree/master/ani",
+	"author": "Edu Prats <hello@eduprats.com>",
+	"license": "Apache-2.0",
+	"private": false,
+	"scripts": {
+		"prepare": "yarn build",
+		"build": "tsc --build tsconfig.ani.json"
+	},
+	"files": [
+		"lib",
+		"examples",
+		"README.md"
+	],
+	"devDependencies": {
+		"typescript": "^4.3.5"
+	}
+}

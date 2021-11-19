@@ -1,0 +1,23 @@
+{
+	"name": "@jocabola/gen",
+	"version": "0.1.0",
+	"description": "Generative Package written in TypeScript",
+	"main": "lib/main.js",
+	"repository": "git@github.com:jocabola/web-packages.git",
+	"homepage": "https://github.com/jocabola/web-packages/tree/master/gfx",
+	"author": "Edu Prats <hello@eduprats.com>",
+	"license": "Apache-2.0",
+	"private": false,
+	"scripts": {
+		"prepare": "yarn build",
+		"build": "tsc --build tsconfig.gen.json && cp -r src/glsl lib/"
+	},
+	"files": [
+		"lib",
+		"examples",
+		"README.md"
+	],
+	"devDependencies": {
+		"typescript": "^4.3.5"
+	}
+}
