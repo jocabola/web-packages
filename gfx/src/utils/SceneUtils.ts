@@ -6,12 +6,6 @@ type ToneMappingOptions = {
 	outputEncoding?:TextureEncoding
 }
 
-const DEFAULTS:ToneMappingOptions = {
-	toneMapping: ACESFilmicToneMapping,
-	exposure: 1.75,
-	outputEncoding: LinearEncoding
-}
-
 export default class SceneUtils {
 	static setHDRI(env:Texture, renderer:WebGLRenderer, opts:ToneMappingOptions={}):Texture {
 		env.mapping = EquirectangularReflectionMapping;
@@ -22,9 +16,9 @@ export default class SceneUtils {
 		const envMap = pmrem.fromEquirectangular(env).texture;
 		pmrem.dispose();
 
-		renderer.toneMapping = opts.toneMapping != undefined ? opts.toneMapping : DEFAULTS.toneMapping;
-		renderer.toneMappingExposure = opts.exposure != undefined ? opts.exposure : DEFAULTS.exposure;
-		renderer.outputEncoding = opts.outputEncoding != undefined ? opts.outputEncoding : DEFAULTS.outputEncoding;
+		if(opts.toneMapping != undefined) renderer.toneMapping = opts.toneMapping;
+		if(opts.exposure != undefined) renderer.toneMappingExposure = opts.exposure;
+		if(opts.outputEncoding != undefined) renderer.outputEncoding = opts.outputEncoding;
 
 		return envMap;
 	}
