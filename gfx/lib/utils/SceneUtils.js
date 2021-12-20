@@ -1,9 +1,4 @@
-import { ACESFilmicToneMapping, EquirectangularReflectionMapping, LinearEncoding, LinearFilter, PMREMGenerator } from "three";
-const DEFAULTS = {
-    toneMapping: ACESFilmicToneMapping,
-    exposure: 1.75,
-    outputEncoding: LinearEncoding
-};
+import { EquirectangularReflectionMapping, LinearFilter, PMREMGenerator } from "three";
 export default class SceneUtils {
     static setHDRI(env, renderer, opts = {}) {
         env.mapping = EquirectangularReflectionMapping;
@@ -12,9 +7,12 @@ export default class SceneUtils {
         const pmrem = new PMREMGenerator(renderer);
         const envMap = pmrem.fromEquirectangular(env).texture;
         pmrem.dispose();
-        renderer.toneMapping = opts.toneMapping != undefined ? opts.toneMapping : DEFAULTS.toneMapping;
-        renderer.toneMappingExposure = opts.exposure != undefined ? opts.exposure : DEFAULTS.exposure;
-        renderer.outputEncoding = opts.outputEncoding != undefined ? opts.outputEncoding : DEFAULTS.outputEncoding;
+        if (opts.toneMapping != undefined)
+            renderer.toneMapping = opts.toneMapping;
+        if (opts.exposure != undefined)
+            renderer.toneMappingExposure = opts.exposure;
+        if (opts.outputEncoding != undefined)
+            renderer.outputEncoding = opts.outputEncoding;
         return envMap;
     }
 }
