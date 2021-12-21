@@ -1,6 +1,2 @@
-export default class FileUtils {
-    private static _instance;
-    private constructor();
-    static get Instance(): FileUtils;
-    static addFileDropHandler(el: HTMLElement, dropHandler: Function, overHandler?: Function): void;
-}
+export declare const downloadFile: (cnt: ArrayBuffer | string, filename: string) => void;
+export declare const addFileDropHandler: (el: HTMLElement, dropHandler: Function, overHandler?: Function | undefined) => void;

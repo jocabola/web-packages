@@ -1,30 +1,14 @@
-declare class ResponseParams {
-    responseType: XMLHttpRequestResponseType;
-}
-declare type StateObject = {
-    slug: string;
-    title: string;
-};
-export default class Utils {
-    private static _instance;
-    private constructor();
-    static get Instance(): Utils;
-    static el(type: string, className?: string, parent?: HTMLElement): HTMLElement;
-    static $(type: string, className?: string, parent?: HTMLElement): HTMLElement;
-    static webgl(): boolean;
-    static getDocumentHeight(): number;
-    static isMobile(): boolean;
-    static isBrowser(vendor: string): boolean;
-    static isSafari(): boolean;
-    static getAndroidVersion(): number;
-    static getIOSVersion(): number;
-    static isIphone(): boolean;
-    static isIpad(): boolean;
-    static isDesktop(): boolean;
-    static isTouchDevice(): boolean;
-    static hasGetUserMedia(): boolean;
-    static copyToClipboard(str: string): void;
-    static loadData(url: string, callback?: Function, params?: ResponseParams): void;
-    static pushState(state: StateObject): void;
-}
-export {};
+export declare function el(type: string, className?: string, parent?: HTMLElement): HTMLElement;
+export declare function webgl(): boolean;
+export declare function getDocumentHeight(): number;
+export declare function isMobile(): boolean;
+export declare function isBrowser(vendor: string): boolean;
+export declare function isSafari(): boolean;
+export declare function getAndroidVersion(): number;
+export declare function isIphone(): boolean;
+export declare function isIpad(): boolean;
+export declare function getIOSVersion(): number;
+export declare function isDesktop(): boolean;
+export declare function isTouchDevice(): boolean;
+export declare function hasGetUserMedia(): boolean;
+export declare function copyToClipboard(str: string): void;

@@ -1,6 +1,6 @@
 {
 	"name": "@jocabola/utils",
-	"version": "0.1.7",
+	"version": "0.1.87",
 	"description": "Web Utils Package written in TypeScript",
 	"main": "lib/main.js",
 	"repository": "git@github.com:jocabola/web-packages.git",
@@ -8,16 +8,20 @@
 	"author": "Edu Prats <hello@eduprats.com>",
 	"license": "MIT",
 	"scripts": {
-	  "prepare": "npm run build",
-	  "build": "tsc --build tsconfig.utils.json"
+		"prepare": "npm run build",
+		"build": "tsc --build tsconfig.utils.json"
 	},
 	"files": [
-	  "lib",
-	  "examples",
-	  "README.md"
+		"lib",
+		"README.md",
+		"package.json"
 	],
 	"devDependencies": {
-	  "typescript": "^4.2.3"
+		"typescript": "^4.5.4"
+	},
+	"exports": {
+		".": {
+            "import": "./lib/main.js"
+        }
 	}
 }
-  

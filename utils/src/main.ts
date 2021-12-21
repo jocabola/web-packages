@@ -1,7 +1,12 @@
-import Utils from './Utils';
-import FileUtils from './FileUtils';
+/* import { copyToClipboard, el, getAndroidVersion, getDocumentHeight, getIOSVersion, hasGetUserMedia, isBrowser, isDesktop, isIpad, isIphone, isMobile, isSafari, isTouchDevice, webgl } from './Utils';
+import { addFileDropHandler, downloadFile } from './FileUtils';
+
 
 export {
-	Utils,
-	FileUtils
-}
+	copyToClipboard, el, getAndroidVersion, getDocumentHeight, getIOSVersion, hasGetUserMedia, isBrowser, isDesktop, isIpad, isIphone, isMobile, isSafari, isTouchDevice, webgl,
+	addFileDropHandler,
+	downloadFile
+} */
+
+export * from './Utils';
+export * from './FileUtils';
