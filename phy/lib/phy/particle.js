@@ -1,12 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Spring = exports.Particle = void 0;
-var math_1 = require("@jocabola/math");
-var Particle = (function () {
-    function Particle(id, drag, lifetime) {
-        if (id === void 0) { id = 0; }
-        if (drag === void 0) { drag = 0.03; }
-        if (lifetime === void 0) { lifetime = -1; }
+const math_1 = require("@jocabola/math");
+class Particle {
+    constructor(id = 0, drag = 0.03, lifetime = -1) {
         this.id = id;
         this.age = 0;
         this.lifetime = lifetime;
@@ -17,45 +14,32 @@ var Particle = (function () {
         this.force = new math_1.Vec();
         this.tmp = new math_1.Vec();
     }
-    Object.defineProperty(Particle.prototype, "locked", {
-        get: function () {
-            return this.state === 1;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Particle.prototype, "dead", {
-        get: function () {
-            return this.state === 3;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Particle.prototype, "idle", {
-        get: function () {
-            return this.state === 2;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Particle.prototype.lock = function () {
+    get locked() {
+        return this.state === 1;
+    }
+    get dead() {
+        return this.state === 3;
+    }
+    get idle() {
+        return this.state === 2;
+    }
+    lock() {
         this.state = 1;
-    };
-    Particle.prototype.unlock = function () {
+    }
+    unlock() {
         this.state = 2;
-    };
-    Particle.prototype.die = function () {
+    }
+    die() {
         this.state = 3;
-    };
-    Particle.prototype.setPosition = function (x, y, z) {
-        if (z === void 0) { z = 0; }
+    }
+    setPosition(x, y, z = 0) {
         this.position.set(x, y, z);
         this.prev.set(x, y, z);
-    };
-    Particle.prototype.copyPosition = function (v) {
+    }
+    copyPosition(v) {
         this.setPosition(v.x, v.y, v.z);
-    };
-    Particle.prototype.update = function () {
+    }
+    update() {
         if (this.lifetime > 0 && this.age === this.lifetime)
             this.state = 3;
         if (this.state > 0)
@@ -68,23 +52,21 @@ var Particle = (function () {
         this.force.set(0, 0, 0);
         this.prev.copy(this.tmp);
         this.prev.lerp(this.position, this.drag);
-    };
-    return Particle;
-}());
+    }
+}
 exports.Particle = Particle;
-var Spring = (function () {
-    function Spring(a, b, strength) {
-        if (strength === void 0) { strength = 0.5; }
+class Spring {
+    constructor(a, b, strength = 0.5) {
         this.restLength = 0;
         this.a = a;
         this.b = b;
         this.strength = strength;
         this.restLength = this.a.position.distanceTo(this.b.position);
     }
-    Spring.prototype.update = function () {
-        var delta = this.b.position.clone().sub(this.a.position);
-        var dist = delta.length() + Number.MIN_VALUE;
-        var normDistStrength = (dist - this.restLength) / dist * this.strength;
+    update() {
+        const delta = this.b.position.clone().sub(this.a.position);
+        const dist = delta.length() + Number.MIN_VALUE;
+        const normDistStrength = (dist - this.restLength) / dist * this.strength;
         if (normDistStrength === 0)
             return;
         delta.scale(normDistStrength);
@@ -94,7 +76,6 @@ var Spring = (function () {
         if (!this.b.locked) {
             this.b.position.sub(delta);
         }
-    };
-    return Spring;
-}());
+    }
+}
 exports.Spring = Spring;

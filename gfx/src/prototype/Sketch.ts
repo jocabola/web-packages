@@ -3,7 +3,7 @@
  */
 
 export default class Sketch {
-	private started:boolean;
+	protected started:boolean;
 	constructor () {
 		this.started = false;
 	}

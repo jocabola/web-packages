@@ -1,6 +1,7 @@
 import { Mesh, OrthographicCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, Vector2 } from 'three';
-import vert from '../glsl/fbo.vert';
 import frag from '../glsl/fbo.frag';
+import vert from '../glsl/fbo.vert';
+const TMP = new Vector2();
 const MAT = new RawShaderMaterial({
     vertexShader: vert,
     fragmentShader: frag,
@@ -61,6 +62,19 @@ export default class FboHelper {
         renderer.setRenderTarget(target);
         renderer.render(this.scene, this.camera);
         renderer.setRenderTarget(null);
+    }
+    renderToViewport(renderer, material) {
+        renderer.getSize(TMP);
+        this.camera.left = -TMP.x / 2;
+        this.camera.right = TMP.x / 2;
+        this.camera.top = TMP.y / 2;
+        this.camera.bottom = -TMP.y / 2;
+        this.camera.updateProjectionMatrix();
+        this.quad.scale.set(TMP.x, TMP.y, 1);
+        this.quad.position.set(0, 0, 0);
+        this.quad.material = material;
+        renderer.setRenderTarget(null);
+        renderer.render(this.scene, this.camera);
     }
     dispose() {
         this.quad.geometry.dispose();

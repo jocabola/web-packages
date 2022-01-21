@@ -7,4 +7,5 @@ export default class FboUtils {
     static drawMRT(mrt: WebGLMultipleRenderTargets, renderer: WebGLRenderer, index: number, x?: number, y?: number, width?: number, height?: number): void;
     static drawTexture(texture: Texture, renderer: WebGLRenderer, x?: number, y?: number, width?: number, height?: number, opacity?: number): void;
     static renderToFbo(fbo: WebGLRenderTarget | WebGLMultipleRenderTargets, renderer: WebGLRenderer, material: Material): void;
+    static renderToViewport(renderer: WebGLRenderer, material: Material): void;
 }

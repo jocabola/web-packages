@@ -28,5 +28,8 @@ export default class FboUtils {
     static renderToFbo(fbo, renderer, material) {
         FboUtils.helper.renderToFbo(fbo, renderer, material);
     }
+    static renderToViewport(renderer, material) {
+        FboUtils.helper.renderToViewport(renderer, material);
+    }
 }
 FboUtils.helper = new FBOHelper();

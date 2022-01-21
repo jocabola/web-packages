@@ -37,4 +37,8 @@ export default class FboUtils {
 	static renderToFbo(fbo:WebGLRenderTarget|WebGLMultipleRenderTargets, renderer:WebGLRenderer, material:Material) {
 		FboUtils.helper.renderToFbo(fbo, renderer, material);
 	}
+
+	static renderToViewport(renderer:WebGLRenderer, material:Material) {
+		FboUtils.helper.renderToViewport(renderer, material);
+	}
 }

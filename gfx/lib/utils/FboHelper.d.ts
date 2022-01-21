@@ -1,4 +1,4 @@
-import { Mesh, OrthographicCamera, RawShaderMaterial, Scene, WebGLRenderTarget, WebGLRenderer, Material, WebGLMultipleRenderTargets, Texture } from 'three';
+import { Material, Mesh, OrthographicCamera, RawShaderMaterial, Scene, Texture, WebGLMultipleRenderTargets, WebGLRenderer, WebGLRenderTarget } from 'three';
 export default class FboHelper {
     camera: OrthographicCamera;
     material: RawShaderMaterial;
@@ -9,5 +9,6 @@ export default class FboHelper {
     renderMRT(target: WebGLMultipleRenderTargets, renderer: WebGLRenderer, index: number, x?: number, y?: number, width?: number, height?: number): void;
     drawTexture(texture: Texture, renderer: WebGLRenderer, x?: number, y?: number, width?: number, height?: number, opacity?: number): void;
     renderToFbo(target: WebGLRenderTarget | WebGLMultipleRenderTargets, renderer: WebGLRenderer, material: Material): void;
+    renderToViewport(renderer: WebGLRenderer, material: Material): void;
     dispose(): void;
 }

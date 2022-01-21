@@ -1,5 +1,5 @@
 export default class Sketch {
-    private started;
+    protected started: boolean;
     constructor();
     start(): void;
     update(): void;

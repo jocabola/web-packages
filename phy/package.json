@@ -17,9 +17,9 @@
     "README.md"
   ],
   "devDependencies": {
-    "typescript": "^4.3.5"
+    "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@jocabola/math": "^0.2.2"
+    "@jocabola/math": "^0.2.3"
   }
 }
