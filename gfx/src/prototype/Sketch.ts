@@ -3,21 +3,27 @@
  */
 
 export default class Sketch {
-	protected started:boolean;
+	protected _started:boolean;
 	constructor () {
-		this.started = false;
+		this._started = false;
 	}
 
-	start() {
-		if(this.started) return;
-		this.started = true;
+	get started():boolean {
+		return this._started;
+	}
+
+	start(customRaf:Function=null) {
+		if(this._started) return;
+		this._started = true;
 		const animate = () => {
 			requestAnimationFrame(animate);
 			this.update();
 			this.render();
 		}
 
-		animate();
+		if (customRaf == null) return animate();
+
+		return customRaf();
 	}
 
 	update() {}

@@ -24,7 +24,6 @@ export default class WebGLSketch extends Sketch {
 
 	constructor(width:number=window.innerWidth, height:number=window.innerHeight, opts:RenderOptions={}, autoStart:boolean=false) {
 		super();
-		this.clock = new Clock(true);
 
 		this.size = new Vector2();
 
@@ -55,6 +54,12 @@ export default class WebGLSketch extends Sketch {
 		this.renderer.setSize(width, height);
 
 		if(autoStart) this.start();
+	}
+
+	start (customRaf:Function=null) {
+		if(this.started) return;
+		this.clock = new Clock(true);
+		super.start(customRaf);
 	}
 
 	get domElement ():HTMLCanvasElement {

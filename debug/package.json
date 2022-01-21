@@ -1,0 +1,50 @@
+{
+  "name": "@jocabola/debug",
+  "version": "0.0.4",
+  "description": "Web Debug Utils Package written in TypeScript",
+  "main": "lib/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jocabola/web-packages.git"
+  },
+  "homepage": "https://github.com/jocabola/web-packages/tree/master/debug",
+  "author": "Edu Prats <hello@eduprats.com>",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc --build tsconfig.debug.json"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "package.json"
+  ],
+  "private": false,
+  "dependencies": {
+    "@tweakpane/core": "^1.0.8",
+    "@tweakpane/plugin-essentials": "^0.1.4",
+    "tweakpane": "^3.0.7"
+  },
+  "devDependencies": {
+    "@jocabola/gfx": "^0.3.94",
+    "three": "^0.136.0",
+    "typescript": "^4.5.5"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/main.js"
+    }
+  },
+  "types": "./lib/main.d.ts",
+  "bugs": {
+    "url": "https://github.com/jocabola/web-packages/issues"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [
+    "debug",
+    "web",
+    "tweakpane"
+  ]
+}

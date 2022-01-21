@@ -3,7 +3,6 @@ import Sketch from "./Sketch";
 export default class WebGLSketch extends Sketch {
     constructor(width = window.innerWidth, height = window.innerHeight, opts = {}, autoStart = false) {
         super();
-        this.clock = new Clock(true);
         this.size = new Vector2();
         this.scene = new Scene();
         if (opts.ortho) {
@@ -20,6 +19,12 @@ export default class WebGLSketch extends Sketch {
         this.renderer.setSize(width, height);
         if (autoStart)
             this.start();
+    }
+    start(customRaf = null) {
+        if (this.started)
+            return;
+        this.clock = new Clock(true);
+        super.start(customRaf);
     }
     get domElement() {
         return this.renderer.domElement;

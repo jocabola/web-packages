@@ -1,17 +1,22 @@
 export default class Sketch {
     constructor() {
-        this.started = false;
+        this._started = false;
     }
-    start() {
-        if (this.started)
+    get started() {
+        return this._started;
+    }
+    start(customRaf = null) {
+        if (this._started)
             return;
-        this.started = true;
+        this._started = true;
         const animate = () => {
             requestAnimationFrame(animate);
             this.update();
             this.render();
         };
-        animate();
+        if (customRaf == null)
+            return animate();
+        return customRaf();
     }
     update() { }
     render() { }

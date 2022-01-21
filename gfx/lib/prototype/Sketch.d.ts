@@ -1,7 +1,8 @@
 export default class Sketch {
-    protected started: boolean;
+    protected _started: boolean;
     constructor();
-    start(): void;
+    get started(): boolean;
+    start(customRaf?: Function): any;
     update(): void;
     render(): void;
 }
