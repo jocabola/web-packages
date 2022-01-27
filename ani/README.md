@@ -1,5 +1,4 @@
 # @jocabola/ani
-
 Animation Package written in TypeScript.
 
 This is part of a series of packages that I use in my studio for personal and commercial web & [THREEjs](https://threejs.org) based work. It might remain undocumented for a long while but feel free to try it out!
