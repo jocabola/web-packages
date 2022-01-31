@@ -1,3 +1,4 @@
+export declare function linear(t: number): number;
 export declare function backIn(t: number): number;
 export declare function backOut(t: number): number;
 export declare function backInOut(t: number): number;

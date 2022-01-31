@@ -1,5 +1,8 @@
 const PI = Math.PI;
 const HALF_PI = PI / 2;
+export function linear(t) {
+    return t;
+}
 export function backIn(t) {
     return Math.pow(t, 3) - t * Math.sin(t * PI);
 }

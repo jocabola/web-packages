@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@jocabola/math@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@jocabola/math/-/math-0.2.3.tgz#7fc140b4da628e4ca9fe8e0e91e81a481240bb34"
+  integrity sha512-/N17zeOq6XXCVULPGsGBrL6Ys9358t45UU0RxC+bome1LDzY8kY7tT9xveKtqsz/E/2cCskdiHpaHcXeskgrBQ==
+  dependencies:
+    mersenne "^0.0.4"
+
+mersenne@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/mersenne/-/mersenne-0.0.4.tgz#401fdec7ec21cdb9e03cd3d3021398da21b27085"
+  integrity sha1-QB/ex+whzbngPNPTAhOY2iGycIU=
+
 typescript@^4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
