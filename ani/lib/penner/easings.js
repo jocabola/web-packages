@@ -77,3 +77,44 @@ export function exponentialIn(t) {
 export function exponentialOut(t) {
     return t == 1 ? t : 1 - Math.pow(2, -10 * t);
 }
+export function quadraticInOut(t) {
+    const p = 2 * t * t;
+    return t < 0.5 ? p : -p + (4 * t) - 1;
+}
+export function quadraticIn(t) {
+    return t * t;
+}
+export function quadraticOut(t) {
+    return -t * (t - 2);
+}
+export function quarticInOut(t) {
+    return t < 0.5
+        ? +8 * Math.pow(t, 4)
+        : -8 * Math.pow(t - 1, 4) + 1;
+}
+export function quarticIn(t) {
+    return Math.pow(t, 4);
+}
+export function quarticOut(t) {
+    return Math.pow(t - 1, 3) * (1 - t) + 1;
+}
+export function qinticInOut(t) {
+    return t < 0.5
+        ? +16 * Math.pow(t, 5)
+        : -0.5 * Math.pow(2 * t - 2, 5) + 1;
+}
+export function qinticIn(t) {
+    return Math.pow(t, 5);
+}
+export function qinticOut(t) {
+    return 1 - (Math.pow(t - 1, 5));
+}
+export function sineInOut(t) {
+    return -0.5 * (Math.cos(PI * t) - 1);
+}
+export function sineIn(t) {
+    return Math.sin((t - 1) * HALF_PI) + 1;
+}
+export function sineOut(t) {
+    return Math.sin(t * HALF_PI);
+}
