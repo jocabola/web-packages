@@ -1,4 +1,4 @@
-import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Material, RGBFormat, Texture, UnsignedByteType, UnsignedShortType, WebGLMultipleRenderTargets, WebGLRenderer, WebGLRenderTarget, WebGLRenderTargetOptions } from "three";
+import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Material, RGBAFormat, Texture, UnsignedByteType, UnsignedShortType, WebGLMultipleRenderTargets, WebGLRenderer, WebGLRenderTarget, WebGLRenderTargetOptions } from "three";
 import FBOHelper from "./FboHelper";
 
 export default class FboUtils {
@@ -10,7 +10,7 @@ export default class FboUtils {
 			magFilter: settings.magFilter !== undefined ? settings.magFilter : LinearFilter,
 			wrapS: settings.wrapS !== undefined ? settings.wrapS : ClampToEdgeWrapping,
 			wrapT: settings.wrapT !== undefined ? settings.wrapT : ClampToEdgeWrapping,
-			format: settings.format ? settings.format : RGBFormat,
+			format: settings.format ? settings.format : RGBAFormat,
 			type: settings.type !== undefined ? settings.type : UnsignedByteType,
 			stencilBuffer: settings.stencilBuffer !== undefined ? settings.stencilBuffer : true	
 		});

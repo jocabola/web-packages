@@ -1,4 +1,4 @@
-import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Mesh, OrthographicCamera, PerspectiveCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, RGBFormat, Scene, UnsignedByteType, UnsignedShortType, WebGLRenderer, WebGLRenderTarget } from "three";
+import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Mesh, OrthographicCamera, PerspectiveCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, UnsignedByteType, UnsignedShortType, WebGLRenderer, WebGLRenderTarget } from "three";
 import frag from '../glsl/fbo.frag';
 import vert from '../glsl/fbo.vert';
 import RenderPass from "./RenderPass";
@@ -31,7 +31,7 @@ export default class RenderComposer {
 			magFilter: settings.magFilter !== undefined ? settings.magFilter : LinearFilter,
 			wrapS: settings.wrapS !== undefined ? settings.wrapS : ClampToEdgeWrapping,
 			wrapT: settings.wrapT !== undefined ? settings.wrapT : ClampToEdgeWrapping,
-			format: settings.useRGBA ? RGBAFormat : RGBFormat,
+			format: RGBAFormat,
 			type: settings.type !== undefined ? settings.type : UnsignedByteType,
 			stencilBuffer: settings.stencilBuffer !== undefined ? settings.stencilBuffer : true	
 		});
