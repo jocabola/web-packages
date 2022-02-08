@@ -1,7 +1,7 @@
 import { TextureLoader } from 'three';
 import { TextureUtils } from '../utils/TextureUtils';
 import Asset from "./Asset";
-import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader';
+import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader.js';
 const loader = new TextureLoader();
 const compLoader = new DDSLoader();
 export default class TextureAsset extends Asset {

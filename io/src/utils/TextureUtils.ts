@@ -1,4 +1,4 @@
-import { CanvasTexture, ClampToEdgeWrapping, CubeTexture, LinearFilter, LinearMipmapLinearFilter, PixelFormat, RGBFormat, Texture, TextureFilter, Vector2, VideoTexture, Wrapping } from "three";
+import { CanvasTexture, ClampToEdgeWrapping, CubeTexture, LinearFilter, LinearMipmapLinearFilter, PixelFormat, RGBAFormat, Texture, TextureFilter, Vector2, VideoTexture, Wrapping } from "three";
 
 class TextureOptions {
 	format?:PixelFormat;
@@ -12,7 +12,7 @@ class TextureOptions {
 
 class TextureUtils {
 	static TextureDefaults:TextureOptions = {
-		format: RGBFormat,
+		format: RGBAFormat,
 		wrapS: ClampToEdgeWrapping,
 		wrapT: ClampToEdgeWrapping,
 		repeat: new Vector2(1,1),

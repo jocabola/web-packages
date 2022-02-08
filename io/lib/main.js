@@ -6,6 +6,5 @@ import CubeTextureAsset from './assets/CubeTextureAsset';
 import VideoTextureAsset from './assets/VideoTextureAsset';
 import GLTFAsset from './assets/GLTFAsset';
 import { TextureOptions, TextureUtils } from './utils/TextureUtils';
-import BasisAsset from './assets/BasisAsset';
 import KTX2Asset from './assets/KTX2Asset';
-export { io, AssetsBundle, Asset, TextureAsset, BasisAsset, KTX2Asset, CubeTextureAsset, VideoTextureAsset, GLTFAsset, TextureUtils, TextureOptions };
+export { io, AssetsBundle, Asset, TextureAsset, KTX2Asset, CubeTextureAsset, VideoTextureAsset, GLTFAsset, TextureUtils, TextureOptions };

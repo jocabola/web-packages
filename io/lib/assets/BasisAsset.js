@@ -1,5 +1,5 @@
 import { sRGBEncoding } from "three";
-import { BasisTextureLoader } from 'three/examples/jsm/loaders/BasisTextureLoader';
+import { BasisTextureLoader } from 'three/examples/jsm/loaders/BasisTextureLoader.js';
 import TextureAsset from "./TextureAsset";
 const basisLoader = new BasisTextureLoader();
 export default class BasisAsset extends TextureAsset {

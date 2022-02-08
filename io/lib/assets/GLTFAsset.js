@@ -1,5 +1,5 @@
 import Asset from './Asset';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 const loader = new GLTFLoader();
 export default class GLTFAsset extends Asset {
     constructor(url) {

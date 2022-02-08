@@ -1,4 +1,4 @@
-import { ClampToEdgeWrapping, LinearFilter, LinearMipmapLinearFilter, RGBFormat, Vector2 } from "three";
+import { ClampToEdgeWrapping, LinearFilter, LinearMipmapLinearFilter, RGBAFormat, Vector2 } from "three";
 class TextureOptions {
 }
 class TextureUtils {
@@ -14,7 +14,7 @@ class TextureUtils {
     }
 }
 TextureUtils.TextureDefaults = {
-    format: RGBFormat,
+    format: RGBAFormat,
     wrapS: ClampToEdgeWrapping,
     wrapT: ClampToEdgeWrapping,
     repeat: new Vector2(1, 1),

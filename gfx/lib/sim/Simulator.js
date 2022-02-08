@@ -1,6 +1,6 @@
 import { AssetsBundle, GLTFAsset, TextureAsset } from '@jocabola/io';
 import { ACESFilmicToneMapping, Mesh, MeshPhysicalMaterial, PerspectiveCamera, PlaneBufferGeometry, Scene, ShaderLib, Vector2 } from 'three';
-import { ReflectorRTT } from 'three/examples/jsm/objects/ReflectorRTT';
+import { ReflectorRTT } from 'three/examples/jsm/objects/ReflectorRTT.js';
 import { BlurPass, FboUtils, SceneUtils } from '../main';
 const floor = new Mesh(new PlaneBufferGeometry(1, 1), new MeshPhysicalMaterial({
     color: 0x999999,

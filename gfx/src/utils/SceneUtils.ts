@@ -1,4 +1,4 @@
-import { ACESFilmicToneMapping, EquirectangularReflectionMapping, LinearEncoding, LinearFilter, PMREMGenerator, Texture, TextureEncoding, ToneMapping, WebGLRenderer } from "three";
+import { EquirectangularReflectionMapping, LinearFilter, PMREMGenerator, Texture, TextureEncoding, ToneMapping, WebGLRenderer } from "three";
 
 type ToneMappingOptions = {
 	toneMapping?:ToneMapping,
