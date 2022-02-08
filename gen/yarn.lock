@@ -2,17 +2,24 @@
 # yarn lockfile v1
 
 
-"@jocabola/io@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@jocabola/io/-/io-0.3.0.tgz#605db60dafe46ea7412c8d283e34ed783729f8e4"
-  integrity sha512-u8CWlrkx0UfS9D262uZdzagNJg5wygRKvSaHmVCA0pkcGDO4AAe47UmRd7VKiG0dXhMbdb0k54IwHtsGBaGZOA==
+"@jocabola/math@^0.2.31":
+  version "0.2.31"
+  resolved "https://registry.yarnpkg.com/@jocabola/math/-/math-0.2.31.tgz#78c530bac7c4682b14bccdcb6c88f6cefbabbe2a"
+  integrity sha512-yse/SbzbmV9c3O5IA+FA/iBWsFnfCLz1zi88HSpKmNsHF3+/FFdIHxF4LALxiRM0EkDtKVGih1GOZGCWA0SeUg==
+  dependencies:
+    mersenne "^0.0.4"
+
+mersenne@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/mersenne/-/mersenne-0.0.4.tgz#401fdec7ec21cdb9e03cd3d3021398da21b27085"
+  integrity sha1-QB/ex+whzbngPNPTAhOY2iGycIU=
 
 three@^0.137.5:
   version "0.137.5"
   resolved "https://registry.yarnpkg.com/three/-/three-0.137.5.tgz#a1e34bedd0412f2d8797112973dfadac78022ce6"
   integrity sha512-rTyr+HDFxjnN8+N/guZjDgfVxgHptZQpf6xfL/Mo7a5JYIFwK6tAq3bzxYYB4Ae0RosDZlDuP+X5aXDXz+XnHQ==
 
-typescript@^4.5.5:
+typescript@^4.3.5:
   version "4.5.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
   integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==

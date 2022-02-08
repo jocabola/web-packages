@@ -9,9 +9,27 @@ export default class AssetsBundle {
 		this.assets.push(asset);
 	}
 
-	loadAll() {
+	/**
+	 * 
+	 * @param onLoaded Callback to be called when all assets are loaded
+	 * @param onProgress Callback for loading progress. Receives float between 0 and 1.
+	 */
+	loadAll(onLoaded:Function=null, onProgress:Function=null) {
 		for (const a of this.assets) {
 			a.load();
+		}
+
+		if(onLoaded != null || onProgress != null) {
+			const prog = () => {
+				if(this.loaded) {
+					onProgress(1);
+					return onLoaded();
+				}
+				if(onProgress != null) onProgress(this.getProgress());
+				window.setTimeout(prog, 100/3);
+			}
+
+			prog();
 		}
 	}
 

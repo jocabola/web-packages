@@ -5,9 +5,21 @@ export default class AssetsBundle {
     add(asset) {
         this.assets.push(asset);
     }
-    loadAll() {
+    loadAll(onLoaded = null, onProgress = null) {
         for (const a of this.assets) {
             a.load();
+        }
+        if (onLoaded != null || onProgress != null) {
+            const prog = () => {
+                if (this.loaded) {
+                    onProgress(1);
+                    return onLoaded();
+                }
+                if (onProgress != null)
+                    onProgress(this.getProgress());
+                window.setTimeout(prog, 100 / 3);
+            };
+            prog();
         }
     }
     load(i) {

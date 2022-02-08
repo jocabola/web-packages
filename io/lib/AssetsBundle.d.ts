@@ -3,7 +3,7 @@ export default class AssetsBundle {
     assets: Array<Asset>;
     constructor();
     add(asset: Asset): void;
-    loadAll(): void;
+    loadAll(onLoaded?: Function, onProgress?: Function): void;
     load(i: number): void;
     getProgress(): number;
     get(i: number): Asset | null;

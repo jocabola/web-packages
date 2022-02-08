@@ -11,6 +11,8 @@ import WebGLSketch from './prototype/WebGLSketch';
 import SceneUtils from './utils/SceneUtils';
 import GfxUtils from './utils/GfxUtils';
 
+export * from './sim/Simulator';
+
 export {
 	glInfo,
 	FboHelper,

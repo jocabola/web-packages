@@ -10,4 +10,5 @@ import Sketch from './prototype/Sketch';
 import WebGLSketch from './prototype/WebGLSketch';
 import SceneUtils from './utils/SceneUtils';
 import GfxUtils from './utils/GfxUtils';
+export * from './sim/Simulator';
 export { glInfo, FboHelper, FboUtils, RenderComposer, RenderPass, BlurPass, DoFPass, FXAAPass, Sketch, WebGLSketch, SceneUtils, GfxUtils };
