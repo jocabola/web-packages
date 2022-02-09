@@ -1,7 +1,7 @@
-import { Pane } from "tweakpane";
-import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
-import { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph'
 import { Sketch } from '@jocabola/gfx';
+import * as EssentialsPlugin from '@tweakpane/plugin-essentials';
+import { FpsGraphBladeApi } from '@tweakpane/plugin-essentials/dist/types/fps-graph/api/fps-graph';
+import { Pane } from "tweakpane";
 
 export function initPane(sketch:Sketch, title:string='Debug Controls'):Pane {
     const pane = new Pane({

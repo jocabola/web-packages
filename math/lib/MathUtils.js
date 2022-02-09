@@ -23,5 +23,8 @@ class MathUtils {
     static map(x, a, b, c, d) {
         return ((x - a) * (d - c)) / (b - a) + c;
     }
+    static fract(n) {
+        return n % 1;
+    }
 }
 exports.default = MathUtils;

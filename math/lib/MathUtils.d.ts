@@ -4,5 +4,6 @@ export default class MathUtils {
     static mix(v1: number, v2: number, alpha: number): number;
     static smoothstep(min: number, max: number, val: number): number;
     static step(thrsh: number, val: number): number;
-    static map(x: any, a: any, b: any, c: any, d: any): any;
+    static map(x: number, a: number, b: number, c: number, d: number): number;
+    static fract(n: number): number;
 }

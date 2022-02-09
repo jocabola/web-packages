@@ -25,7 +25,11 @@ export default class MathUtils {
 		return val < thrsh ? 0 : 1;
 	}
 
-	static map(x, a, b, c, d){
+	static map(x:number, a:number, b:number, c:number, d:number):number{
 		return ((x - a) * (d - c)) / (b - a) + c;
+	}
+
+	static fract(n:number):number {
+		return n % 1;
 	}
 }
