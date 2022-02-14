@@ -1,4 +1,6 @@
-export default class glInfo {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class glInfo {
     constructor(gl) {
         this.gl = gl;
         const glExtensionDebugRendererInfo = gl.getExtension('WEBGL_debug_renderer_info');
@@ -46,3 +48,4 @@ export default class glInfo {
         return re.test(vendor) || re2.test(vendor) || re3.test(vendor);
     }
 }
+exports.default = glInfo;

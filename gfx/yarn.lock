@@ -7,6 +7,18 @@
   resolved "https://registry.yarnpkg.com/@jocabola/io/-/io-0.3.0.tgz#605db60dafe46ea7412c8d283e34ed783729f8e4"
   integrity sha512-u8CWlrkx0UfS9D262uZdzagNJg5wygRKvSaHmVCA0pkcGDO4AAe47UmRd7VKiG0dXhMbdb0k54IwHtsGBaGZOA==
 
+"@jocabola/math@^0.2.32":
+  version "0.2.32"
+  resolved "https://registry.yarnpkg.com/@jocabola/math/-/math-0.2.32.tgz#2af8cbe3af601e1e84b1e204014f61306453efbd"
+  integrity sha512-Kj9xiHJmTE0JqbtObkzq45Kofc1p2uhyy6qr4o9v81wOarADzNZTSzUQn0y7rXBSyQLOMO5hDvlebvD7Avn6ig==
+  dependencies:
+    mersenne "^0.0.4"
+
+mersenne@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/mersenne/-/mersenne-0.0.4.tgz#401fdec7ec21cdb9e03cd3d3021398da21b27085"
+  integrity sha1-QB/ex+whzbngPNPTAhOY2iGycIU=
+
 three@^0.137.5:
   version "0.137.5"
   resolved "https://registry.yarnpkg.com/three/-/three-0.137.5.tgz#a1e34bedd0412f2d8797112973dfadac78022ce6"

@@ -9,9 +9,10 @@ import FXAAPass from './composer/FXAAPass';
 import Sketch from './prototype/Sketch';
 import WebGLSketch from './prototype/WebGLSketch';
 import SceneUtils from './utils/SceneUtils';
-import GfxUtils from './utils/GfxUtils';
 
+export * from './utils/GfxUtils';
 export * from './sim/Simulator';
+export * from './sim/LEDScreenTile';
 
 export {
 	glInfo,
@@ -24,6 +25,5 @@ export {
 	FXAAPass,
 	Sketch,
 	WebGLSketch,
-	SceneUtils,
-	GfxUtils
+	SceneUtils
 }

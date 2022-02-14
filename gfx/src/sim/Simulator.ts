@@ -32,7 +32,7 @@ bundle.add(new TextureAsset('https://assets.eduprats.com/textures/sim/floor/nois
 
 export const Figures = {
     boy: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/boy.glb'),
-    girl: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/boy.glb'),
+    girl: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/girl.glb'),
     female: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/female.glb'),
     male: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/male.glb'),
     male2: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/male2.glb')

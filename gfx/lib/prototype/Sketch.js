@@ -1,4 +1,6 @@
-export default class Sketch {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class Sketch {
     constructor() {
         this._started = false;
     }
@@ -21,3 +23,4 @@ export default class Sketch {
     update() { }
     render() { }
 }
+exports.default = Sketch;

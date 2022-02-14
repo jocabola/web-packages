@@ -1,31 +1,36 @@
-import { Mesh, OrthographicCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, Vector2 } from "three";
-import FboUtils from '../utils/FboUtils';
-import RenderPass from "./RenderPass";
-import vert from '../glsl/fbo.vert';
-import frag from '../glsl/vfx/blur.frag';
-export default class BlurPass extends RenderPass {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const three_1 = require("three");
+const FboUtils_1 = __importDefault(require("../utils/FboUtils"));
+const RenderPass_1 = __importDefault(require("./RenderPass"));
+const fbo_vert_1 = __importDefault(require("../glsl/fbo.vert"));
+const blur_frag_1 = __importDefault(require("../glsl/vfx/blur.frag"));
+class BlurPass extends RenderPass_1.default {
     constructor(src, width, height, scale = .25, radius = 2.0, iterations = 4, quality = 0) {
         super();
         this.radius = 2;
         this.iterations = 4;
         this.quality = 0;
         this.source = src;
-        this.ping = FboUtils.getRenderTarget(width * scale, height * scale, {
-            format: RGBAFormat
+        this.ping = FboUtils_1.default.getRenderTarget(width * scale, height * scale, {
+            format: three_1.RGBAFormat
         });
         this.pong = this.ping.clone();
         this.radius = radius;
         this.iterations = iterations;
         this.scale = scale;
-        this.shader = new RawShaderMaterial({
-            vertexShader: vert,
-            fragmentShader: frag,
+        this.shader = new three_1.RawShaderMaterial({
+            vertexShader: fbo_vert_1.default,
+            fragmentShader: blur_frag_1.default,
             uniforms: {
                 resolution: {
-                    value: new Vector2(width, height)
+                    value: new three_1.Vector2(width, height)
                 },
                 direction: {
-                    value: new Vector2()
+                    value: new three_1.Vector2()
                 },
                 scale: {
                     value: scale
@@ -38,13 +43,13 @@ export default class BlurPass extends RenderPass {
                 }
             }
         });
-        this.scene = new Scene();
+        this.scene = new three_1.Scene();
         const w = scale * width / 2;
         const h = scale * height / 2;
-        this.camera = new OrthographicCamera(-w, w, h, -h, 0, 100);
+        this.camera = new three_1.OrthographicCamera(-w, w, h, -h, 0, 100);
         this.camera.position.z = 1;
         this.scene.add(this.camera);
-        this.quad = new Mesh(new PlaneBufferGeometry(1, 1), this.shader);
+        this.quad = new three_1.Mesh(new three_1.PlaneBufferGeometry(1, 1), this.shader);
         this.quad.scale.set(width * scale, height * scale, 1);
         this.scene.add(this.quad);
     }
@@ -94,3 +99,4 @@ export default class BlurPass extends RenderPass {
         return this.pong.texture;
     }
 }
+exports.default = BlurPass;
