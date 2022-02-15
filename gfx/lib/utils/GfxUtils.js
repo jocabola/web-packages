@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fitRectToViewport = exports.getTextureRatio = exports.getTextureSize = exports.getWindowSize = exports.getRatio = exports.frustumHeight = exports.perspectiveFov = exports.createTextureFromFile = void 0;
+exports.getTextureViewportRect = exports.fitRectToViewport = exports.getTextureRatio = exports.getTextureSize = exports.getWindowSize = exports.getRatio = exports.frustumHeight = exports.perspectiveFov = exports.createTextureFromFile = void 0;
 const three_1 = require("three");
-const DEG2RAD = 180 / Math.PI;
-const RAD2DEG = Math.PI / 180;
+const RAD2DEG = 180 / Math.PI;
+const DEG2RAD = Math.PI / 180;
 function createTextureFromFile(file, handler = null) {
     if (file.type.indexOf("image") === -1)
         console.warn("File is not an Image!");
@@ -20,11 +20,11 @@ function createTextureFromFile(file, handler = null) {
 }
 exports.createTextureFromFile = createTextureFromFile;
 function perspectiveFov(z, viewportHeight = window.innerHeight) {
-    return 2 * Math.atan(viewportHeight * .5 / z) * DEG2RAD;
+    return 2 * Math.atan(viewportHeight * .5 / z) * RAD2DEG;
 }
 exports.perspectiveFov = perspectiveFov;
 function frustumHeight(fov, depth) {
-    return 2 * (depth * Math.tan((fov * .5) * RAD2DEG));
+    return 2 * (depth * Math.tan((fov * .5) * DEG2RAD));
 }
 exports.frustumHeight = frustumHeight;
 function getRatio(size) {
@@ -55,3 +55,12 @@ function fitRectToViewport(rect, viewport = getWindowSize()) {
     return viewport.width / rect.width;
 }
 exports.fitRectToViewport = fitRectToViewport;
+function getTextureViewportRect(texture, viewport = getWindowSize()) {
+    const scl = fitRectToViewport(texture.image, viewport);
+    const tSize = texture.image;
+    return {
+        width: tSize.width * scl,
+        height: tSize.height * scl
+    };
+}
+exports.getTextureViewportRect = getTextureViewportRect;
