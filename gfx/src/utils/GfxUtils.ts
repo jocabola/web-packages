@@ -1,7 +1,7 @@
 import { Texture } from "three";
 
-const DEG2RAD = 180 / Math.PI;
-const RAD2DEG = Math.PI / 180;
+const RAD2DEG = 180 / Math.PI;
+const DEG2RAD = Math.PI / 180;
 
 export function createTextureFromFile (file:File, handler:Function=null) {
 	if(file.type.indexOf("image") === -1) console.warn("File is not an Image!");
@@ -24,7 +24,7 @@ export function createTextureFromFile (file:File, handler:Function=null) {
  * @returns FOV in degrees
  */
 export function perspectiveFov(z:number, viewportHeight:number=window.innerHeight): number{
-	return 2 * Math.atan(viewportHeight * .5 / z) * DEG2RAD;
+	return 2 * Math.atan(viewportHeight * .5 / z) * RAD2DEG;
 }
 
 /**
@@ -34,7 +34,7 @@ export function perspectiveFov(z:number, viewportHeight:number=window.innerHeigh
  * @returns height of frustum
  */
 export function frustumHeight(fov:number, depth:number): number {
-	return 2 * (depth * Math.tan((fov * .5) * RAD2DEG));
+	return 2 * (depth * Math.tan((fov * .5) * DEG2RAD));
 }
 
 export type Size = {
