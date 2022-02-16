@@ -56,10 +56,10 @@ export default class WebGLSketch extends Sketch {
 		if(autoStart) this.start();
 	}
 
-	start (customRaf:Function=null) {
+	start(customRaf:FrameRequestCallback=null) {
 		if(this.started) return;
 		this.clock = new Clock(true);
-		super.start(customRaf);
+		return super.start(customRaf);
 	}
 
 	get domElement ():HTMLCanvasElement {

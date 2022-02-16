@@ -29,7 +29,7 @@ class WebGLSketch extends Sketch_1.default {
         if (this.started)
             return;
         this.clock = new three_1.Clock(true);
-        super.start(customRaf);
+        return super.start(customRaf);
     }
     get domElement() {
         return this.renderer.domElement;

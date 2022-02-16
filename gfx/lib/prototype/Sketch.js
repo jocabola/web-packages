@@ -16,9 +16,10 @@ class Sketch {
             this.update();
             this.render();
         };
-        if (customRaf == null)
-            return animate();
-        return customRaf();
+        if (customRaf == null) {
+            return requestAnimationFrame(animate);
+        }
+        return requestAnimationFrame(customRaf);
     }
     update() { }
     render() { }

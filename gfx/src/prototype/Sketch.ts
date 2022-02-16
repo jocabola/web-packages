@@ -12,7 +12,7 @@ export default class Sketch {
 		return this._started;
 	}
 
-	start(customRaf:Function=null) {
+	start(customRaf:FrameRequestCallback=null) {
 		if(this._started) return;
 		this._started = true;
 		const animate = () => {
@@ -21,9 +21,11 @@ export default class Sketch {
 			this.render();
 		}
 
-		if (customRaf == null) return animate();
+		if (customRaf == null) {
+			return requestAnimationFrame(animate);
+		}
 
-		return customRaf();
+		return requestAnimationFrame(customRaf);
 	}
 
 	update() {}
