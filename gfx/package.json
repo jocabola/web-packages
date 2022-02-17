@@ -1,6 +1,6 @@
 {
 	"name": "@jocabola/gfx",
-	"version": "0.3.979",
+	"version": "0.4.18",
 	"description": "Web GFX Package written in TypeScript",
 	"main": "lib/main.js",
 	"repository": "git@github.com:jocabola/web-packages.git",
@@ -17,10 +17,12 @@
 		"examples",
 		"README.md"
 	],
-	"devDependencies": {
-		"@jocabola/io": "^0.3.0",
+	"dependencies": {
+		"@jocabola/io": "^0.3.54",
 		"@jocabola/math": "^0.2.32",
-		"three": "^0.137.5",
+		"three": "^0.137.5"
+	},
+	"devDependencies": {
 		"typescript": "^4.5.5"
 	}
 }

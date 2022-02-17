@@ -112,3 +112,18 @@ export function getTextureViewportRect(texture:Texture, viewport:Size=getWindowS
 		height: tSize.height * scl
 	}
 }
+
+/**
+ * Returns a Size (width, height) to fit a Size into
+ * a given orthographic viewport.
+ * @param texture Input texture
+ * @param viewport Viewport's Size
+ * @returns Target Size
+ */
+ export function getSizeViewportRect(rect:Size, viewport:Size=getWindowSize()): Size {
+	const scl = fitRectToViewport(rect, viewport);
+	return {
+		width: rect.width * scl,
+		height: rect.height * scl
+	}
+}

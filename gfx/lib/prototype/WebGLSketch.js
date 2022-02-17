@@ -1,23 +1,18 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const three_1 = require("three");
-const Sketch_1 = __importDefault(require("./Sketch"));
-class WebGLSketch extends Sketch_1.default {
+import { Clock, OrthographicCamera, PerspectiveCamera, Scene, Vector2, WebGLRenderer } from "three";
+import Sketch from "./Sketch";
+export default class WebGLSketch extends Sketch {
     constructor(width = window.innerWidth, height = window.innerHeight, opts = {}, autoStart = false) {
         super();
-        this.size = new three_1.Vector2();
-        this.scene = new three_1.Scene();
+        this.size = new Vector2();
+        this.scene = new Scene();
         if (opts.ortho) {
-            this.camera = new three_1.OrthographicCamera(-width / 2, width / 2, height / 2, -height / 2, opts.near != undefined ? opts.near : .1, opts.far != undefined ? opts.far : 1000);
+            this.camera = new OrthographicCamera(-width / 2, width / 2, height / 2, -height / 2, opts.near != undefined ? opts.near : .1, opts.far != undefined ? opts.far : 1000);
         }
         else {
-            this.camera = new three_1.PerspectiveCamera(opts.fov != undefined ? opts.fov : 35, width / height, opts.near != undefined ? opts.near : .1, opts.far != undefined ? opts.far : 1000);
+            this.camera = new PerspectiveCamera(opts.fov != undefined ? opts.fov : 35, width / height, opts.near != undefined ? opts.near : .1, opts.far != undefined ? opts.far : 1000);
         }
         this.scene.add(this.camera);
-        this.renderer = new three_1.WebGLRenderer({
+        this.renderer = new WebGLRenderer({
             antialias: opts.antialias != undefined ? opts.antialias : true,
             alpha: opts.alpha != undefined ? opts.alpha : true
         });
@@ -28,7 +23,7 @@ class WebGLSketch extends Sketch_1.default {
     start(customRaf = null) {
         if (this.started)
             return;
-        this.clock = new three_1.Clock(true);
+        this.clock = new Clock(true);
         return super.start(customRaf);
     }
     get domElement() {
@@ -54,4 +49,3 @@ class WebGLSketch extends Sketch_1.default {
         this.renderer.render(this.scene, this.camera);
     }
 }
-exports.default = WebGLSketch;

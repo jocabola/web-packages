@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.LEDScreenTile = exports.BASE_GEO = exports.BASE_MAT = exports.SCREEN_MAT = void 0;
-const math_1 = require("@jocabola/math");
-const three_1 = require("three");
-exports.SCREEN_MAT = new three_1.MeshBasicMaterial({
-    map: new three_1.Texture(),
+import { MathUtils } from "@jocabola/math";
+import { BoxBufferGeometry, InstancedBufferAttribute, InstancedMesh, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PlaneBufferGeometry, Texture, Vector3 } from "three";
+export const SCREEN_MAT = new MeshBasicMaterial({
+    map: new Texture(),
     color: 0xffffff
 });
-exports.SCREEN_MAT.onBeforeCompile = (shader) => {
+SCREEN_MAT.onBeforeCompile = (shader) => {
     shader.vertexShader = shader.vertexShader.replace('#include <uv2_pars_vertex>', `#include <uv2_pars_vertex>
         attribute vec2 cuv;
         varying vec2 vCUv;`);
@@ -16,24 +13,24 @@ exports.SCREEN_MAT.onBeforeCompile = (shader) => {
         varying vec2 vCUv;`);
     shader.fragmentShader = shader.fragmentShader.replace('#include <map_fragment>', `diffuseColor.rgb = texture2D(map, vCUv).rgb;`);
 };
-const SCREEN_MAT_2 = new three_1.MeshBasicMaterial({
-    map: exports.SCREEN_MAT.map,
+const SCREEN_MAT_2 = new MeshBasicMaterial({
+    map: SCREEN_MAT.map,
     color: 0xffffff,
     opacity: 1,
     transparent: true
 });
-exports.BASE_MAT = new three_1.MeshStandardMaterial({
+export const BASE_MAT = new MeshStandardMaterial({
     color: 0x333333,
     roughness: .6,
     metalness: .4
 });
-exports.BASE_GEO = new three_1.BoxBufferGeometry(1, 1, 1);
-const tmp = new three_1.Vector3();
-class LEDScreenTile {
+export const BASE_GEO = new BoxBufferGeometry(1, 1, 1);
+const tmp = new Vector3();
+export class LEDScreenTile {
     constructor(width, height, pitch, cols, crop) {
         const s = width / cols;
-        this.container = new three_1.Object3D();
-        const base = new three_1.Mesh(exports.BASE_GEO, exports.BASE_MAT);
+        this.container = new Object3D();
+        const base = new Mesh(BASE_GEO, BASE_MAT);
         base.scale.set(width, height, .1);
         this.add(base);
         const pos = [];
@@ -54,19 +51,19 @@ class LEDScreenTile {
             y += s;
             j += 1 / h;
         }
-        const geo = new three_1.PlaneBufferGeometry(s, s);
-        this.pixels = new three_1.InstancedMesh(geo, exports.SCREEN_MAT, pos.length / 3);
-        const uvatt = new three_1.InstancedBufferAttribute(new Float32Array(uv), 2);
+        const geo = new PlaneBufferGeometry(s, s);
+        this.pixels = new InstancedMesh(geo, SCREEN_MAT, pos.length / 3);
+        const uvatt = new InstancedBufferAttribute(new Float32Array(uv), 2);
         geo.setAttribute("cuv", uvatt);
-        const matrix = new three_1.Matrix4();
-        const scale = new three_1.Vector3(1 - pitch, 1 - pitch, 1);
+        const matrix = new Matrix4();
+        const scale = new Vector3(1 - pitch, 1 - pitch, 1);
         for (let i = 0; i < pos.length / 3; i++) {
             matrix.identity();
             matrix.scale(scale);
             matrix.setPosition(pos[i * 3], pos[i * 3 + 1], 0);
             this.pixels.setMatrixAt(i, matrix);
         }
-        const sgeo = new three_1.PlaneBufferGeometry(width, height);
+        const sgeo = new PlaneBufferGeometry(width, height);
         const suv = sgeo.attributes.uv;
         suv.array[0] = crop.u;
         suv.array[1] = crop.v + crop.height;
@@ -77,7 +74,7 @@ class LEDScreenTile {
         suv.array[6] = crop.u + crop.width;
         suv.array[7] = crop.v;
         suv.needsUpdate = true;
-        this.screen = new three_1.Mesh(sgeo, SCREEN_MAT_2.clone());
+        this.screen = new Mesh(sgeo, SCREEN_MAT_2.clone());
         this.pixels.position.z = base.scale.z / 2 + .01;
         this.screen.position.copy(this.pixels.position);
         this.add(this.pixels);
@@ -95,9 +92,8 @@ class LEDScreenTile {
     update(camera) {
         camera.getWorldPosition(tmp);
         const d = tmp.sub(this.container.position).length();
-        const o = math_1.MathUtils.smoothstep(1, 2, d);
+        const o = MathUtils.smoothstep(1, 2, d);
         this.pixels.visible = o < 1;
         this.screen.material.opacity = o;
     }
 }
-exports.LEDScreenTile = LEDScreenTile;

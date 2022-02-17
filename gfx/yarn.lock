@@ -2,10 +2,12 @@
 # yarn lockfile v1
 
 
-"@jocabola/io@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@jocabola/io/-/io-0.3.0.tgz#605db60dafe46ea7412c8d283e34ed783729f8e4"
-  integrity sha512-u8CWlrkx0UfS9D262uZdzagNJg5wygRKvSaHmVCA0pkcGDO4AAe47UmRd7VKiG0dXhMbdb0k54IwHtsGBaGZOA==
+"@jocabola/io@^0.3.54":
+  version "0.3.54"
+  resolved "https://registry.yarnpkg.com/@jocabola/io/-/io-0.3.54.tgz#0c25a92caeeaa5a91279d0ccfaaecb2f4d704274"
+  integrity sha512-Aha8Chvx31RJu102BGKrJVK86pImXrT6JULDlASYBnsLs0eubiZjckgUxxLLgfiJR0QEt3vUJjr1VSF/TNkbmg==
+  dependencies:
+    three "^0.137.5"
 
 "@jocabola/math@^0.2.32":
   version "0.2.32"

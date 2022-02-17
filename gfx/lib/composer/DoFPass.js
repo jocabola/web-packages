@@ -1,17 +1,12 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const three_1 = require("three");
-const BlurPass_1 = __importDefault(require("./BlurPass"));
-const RenderPass_1 = __importDefault(require("./RenderPass"));
-const fbo_vert_1 = __importDefault(require("../glsl/fbo.vert"));
-const dof_frag_1 = __importDefault(require("../glsl/vfx/dof.frag"));
-const depth_glsl_1 = __importDefault(require("../glsl/lib/depth.glsl"));
-const SHADER = new three_1.RawShaderMaterial({
-    vertexShader: fbo_vert_1.default,
-    fragmentShader: dof_frag_1.default,
+import { RawShaderMaterial, ShaderChunk } from "three";
+import BlurPass from './BlurPass';
+import RenderPass from './RenderPass';
+import vert from '../glsl/fbo.vert';
+import frag from '../glsl/vfx/dof.frag';
+import depth from '../glsl/lib/depth.glsl';
+const SHADER = new RawShaderMaterial({
+    vertexShader: vert,
+    fragmentShader: frag,
     uniforms: {
         tInput: { value: null },
         tBlur: { value: null },
@@ -35,11 +30,11 @@ const DEFAULTS = {
     focalDistance: 1,
     aperture: 5
 };
-class DoFPass extends RenderPass_1.default {
+export default class DoFPass extends RenderPass {
     constructor(width, height, settings = {}) {
         super();
-        this.blurPass = new BlurPass_1.default(null, width, height, settings.blurScale || DEFAULTS.blurScale, settings.blurRadius || DEFAULTS.blurRadius, settings.blurIterations || DEFAULTS.blurIterations, settings.blurQuality || DEFAULTS.blurQuality);
-        three_1.ShaderChunk.depth = depth_glsl_1.default;
+        this.blurPass = new BlurPass(null, width, height, settings.blurScale || DEFAULTS.blurScale, settings.blurRadius || DEFAULTS.blurRadius, settings.blurIterations || DEFAULTS.blurIterations, settings.blurQuality || DEFAULTS.blurQuality);
+        ShaderChunk.depth = depth;
         this.shader = SHADER;
         SHADER.uniforms.cameraNear.value = settings.camNear || DEFAULTS.camNear;
         SHADER.uniforms.cameraFar.value = settings.camFar || DEFAULTS.camFar;
@@ -56,4 +51,3 @@ class DoFPass extends RenderPass_1.default {
         super.render(renderer, composer, toScreen);
     }
 }
-exports.default = DoFPass;

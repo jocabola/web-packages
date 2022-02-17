@@ -1,7 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class Sketch {
+export default class Sketch {
     constructor() {
+        this._paused = false;
+        this._raf = null;
+        this._rafId = -1;
         this._started = false;
     }
     get started() {
@@ -12,16 +13,35 @@ class Sketch {
             return;
         this._started = true;
         const animate = () => {
-            requestAnimationFrame(animate);
             this.update();
             this.render();
+            requestAnimationFrame(animate);
         };
         if (customRaf == null) {
-            return requestAnimationFrame(animate);
+            this._raf = animate;
         }
-        return requestAnimationFrame(customRaf);
+        else {
+            this._raf = customRaf;
+        }
+        this._rafId = requestAnimationFrame(this._raf);
+        return this._rafId;
+    }
+    pause() {
+        if (!this._started)
+            return;
+        if (this._paused)
+            return;
+        this._paused = true;
+        cancelAnimationFrame(this._rafId);
+    }
+    resume() {
+        if (!this._started)
+            return;
+        if (!this._paused)
+            return;
+        this._paused = false;
+        this._rafId = requestAnimationFrame(this._raf);
     }
     update() { }
     render() { }
 }
-exports.default = Sketch;

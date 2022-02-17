@@ -1,7 +1,7 @@
 import { AssetsBundle, GLTFAsset, TextureAsset } from '@jocabola/io';
-import { ACESFilmicToneMapping, Mesh, MeshPhysicalMaterial, PerspectiveCamera, PlaneBufferGeometry, Scene, ShaderLib, Texture, Vector2, WebGLRenderer, WebGLRenderTarget } from 'three';
-import { ReflectorRTT } from 'three/examples/jsm/objects/ReflectorRTT.js';
+import { ACESFilmicToneMapping, Mesh, MeshPhysicalMaterial, PerspectiveCamera, PlaneBufferGeometry, Scene, ShaderLib, Vector2, WebGLRenderer, WebGLRenderTarget } from 'three';
 import { BlurPass, FboUtils, SceneUtils } from '../main';
+import { ReflectorRTT } from 'three/examples/jsm/objects/ReflectorRTT.js'
 
 const floor = new Mesh(
 	new PlaneBufferGeometry(1, 1),

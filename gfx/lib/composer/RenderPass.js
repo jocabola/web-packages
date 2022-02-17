@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class RenderPass {
+export default class RenderPass {
     constructor() {
     }
     render(renderer, composer, toScreen = false) {
@@ -13,4 +11,3 @@ class RenderPass {
         renderer.render(composer.scene, composer.camera);
     }
 }
-exports.default = RenderPass;

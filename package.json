@@ -4,5 +4,8 @@
   "description": "A series of packages for web based work.",
   "author": "Edu Prats <hello@eduprats.com>",
   "license": "Apache-2.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@jocabola/three": "^0.0.1"
+  }
 }

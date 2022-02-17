@@ -2,10 +2,25 @@
 # yarn lockfile v1
 
 
-"@jocabola/gfx@^0.3.94":
-  version "0.3.94"
-  resolved "https://registry.yarnpkg.com/@jocabola/gfx/-/gfx-0.3.94.tgz#0f0b9b6f0420d31ba3fe51faa5851790d4044070"
-  integrity sha512-Iou0BeNz69Win7Gz1t9nChzMQ6GD+3HTDrLaCml9PJNWj2p0m7NvjDCoSk/aNeGnve/j7330DgRSEuMEcwlIfA==
+"@jocabola/gfx@^0.3.982":
+  version "0.3.982"
+  resolved "https://registry.yarnpkg.com/@jocabola/gfx/-/gfx-0.3.982.tgz#01486a3f78c71112297b330ffd98e421e0888673"
+  integrity sha512-lin4jymT16A8XrjWchdGWF7JC43V0UWy0TUMMC/KkxQvbvFQIDcEPKmSjIb3yd+jX59Ry0jkmgHHP5dcLauChQ==
+  dependencies:
+    "@jocabola/io" "^0.3.3"
+    "@jocabola/math" "^0.2.32"
+
+"@jocabola/io@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@jocabola/io/-/io-0.3.3.tgz#a0ee5a85d8329315e0c63991110a382394139481"
+  integrity sha512-CInt8P+oLNp2ykCpT13efI+TWhytIQzU9Z8URmDwzRmBw9/sHFil9qbrSVztlo4YdxR15AD3jNWLQHrFUoyTpA==
+
+"@jocabola/math@^0.2.32":
+  version "0.2.32"
+  resolved "https://registry.yarnpkg.com/@jocabola/math/-/math-0.2.32.tgz#2af8cbe3af601e1e84b1e204014f61306453efbd"
+  integrity sha512-Kj9xiHJmTE0JqbtObkzq45Kofc1p2uhyy6qr4o9v81wOarADzNZTSzUQn0y7rXBSyQLOMO5hDvlebvD7Avn6ig==
+  dependencies:
+    mersenne "^0.0.4"
 
 "@tweakpane/core@^1.0.8":
   version "1.0.8"
@@ -17,10 +32,10 @@
   resolved "https://registry.yarnpkg.com/@tweakpane/plugin-essentials/-/plugin-essentials-0.1.4.tgz#144b54dfe274bb1c161285c358268573e039cb99"
   integrity sha512-beJWDrTo6a29eh1L5AFsiybsiWL2BFMN+49dwAzccnR7vr6uXy3qxJIZVr3J91KXZwDEg1XZ+ZW301Sz+xTBqw==
 
-three@^0.136.0:
-  version "0.136.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.136.0.tgz#b1504db021b46398ef468aa7849f3dcabb814f50"
-  integrity sha512-+fEMX7nYLz2ZesVP/dyifli5Jf8gR3XPAnFJveQ80aMhibFduzrADnjMbARXh8+W9qLK7rshJCjAIL/6cDxC+A==
+mersenne@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/mersenne/-/mersenne-0.0.4.tgz#401fdec7ec21cdb9e03cd3d3021398da21b27085"
+  integrity sha1-QB/ex+whzbngPNPTAhOY2iGycIU=
 
 tweakpane@^3.0.7:
   version "3.0.7"

@@ -1,6 +1,6 @@
 {
   "name": "@jocabola/debug",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Web Debug Utils Package written in TypeScript",
   "main": "lib/main.js",
   "repository": {
@@ -23,11 +23,10 @@
   "dependencies": {
     "@tweakpane/core": "^1.0.8",
     "@tweakpane/plugin-essentials": "^0.1.4",
-    "tweakpane": "^3.0.7"
+    "tweakpane": "^3.0.7",
+    "@jocabola/gfx": "^0.3.982"
   },
   "devDependencies": {
-    "@jocabola/gfx": "^0.3.94",
-    "three": "^0.136.0",
     "typescript": "^4.5.5"
   },
   "exports": {

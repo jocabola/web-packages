@@ -20,8 +20,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.initPane = void 0;
-const tweakpane_1 = require("tweakpane");
 const EssentialsPlugin = __importStar(require("@tweakpane/plugin-essentials"));
+const tweakpane_1 = require("tweakpane");
 function initPane(sketch, title = 'Debug Controls') {
     const pane = new tweakpane_1.Pane({
         title: title

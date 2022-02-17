@@ -1,12 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const three_1 = require("three");
-class SceneUtils {
+import { EquirectangularReflectionMapping, LinearFilter, PMREMGenerator } from "three";
+export default class SceneUtils {
     static setHDRI(env, renderer, opts = {}) {
-        env.mapping = three_1.EquirectangularReflectionMapping;
-        env.magFilter = three_1.LinearFilter;
+        env.mapping = EquirectangularReflectionMapping;
+        env.magFilter = LinearFilter;
         env.needsUpdate = true;
-        const pmrem = new three_1.PMREMGenerator(renderer);
+        const pmrem = new PMREMGenerator(renderer);
         const envMap = pmrem.fromEquirectangular(env).texture;
         pmrem.dispose();
         if (opts.toneMapping != undefined)
@@ -18,4 +16,3 @@ class SceneUtils {
         return envMap;
     }
 }
-exports.default = SceneUtils;
