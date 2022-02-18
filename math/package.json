@@ -1,6 +1,6 @@
 {
   "name": "@jocabola/math",
-  "version": "0.2.33",
+  "version": "0.2.34",
   "description": "Math Package in TypeScript. Part of jocabola/web packages",
   "repository": "git@github.com:jocabola/web-packages.git",
   "homepage": "https://github.com/jocabola/web-packages/tree/master/math",

@@ -10,6 +10,8 @@ const TMP = new three_1.Vector3();
 class CachedCurve {
     constructor(curve, nPoints = 100) {
         this.points = curve.getPoints(nPoints);
+        this.curve = curve;
+        this.nPoints = this.points.length;
     }
     getPoint(t) {
         const T = t * (this.nPoints - 1);
