@@ -4,5 +4,5 @@ export declare class CachedCurve {
     points: Array<Vector3>;
     private curve;
     constructor(curve: Curve<Vector3>, nPoints?: number);
-    getPoint(t: number): Vector3;
+    getPoint(t: number, target?: Vector3): Vector3;
 }
