@@ -1,23 +1,5 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Vec = exports.MathUtils = exports.Random = void 0;
-const Random_1 = __importDefault(require("./Random"));
-exports.Random = Random_1.default;
-const MathUtils_1 = __importDefault(require("./MathUtils"));
-exports.MathUtils = MathUtils_1.default;
-const Vector_1 = __importDefault(require("./Vector"));
-exports.Vec = Vector_1.default;
-__exportStar(require("./CachedCurve"), exports);
+import Random from './Random';
+import MathUtils from './MathUtils';
+import Vec from './Vector';
+export * from './CachedCurve';
+export { Random, MathUtils, Vec };

@@ -1,19 +1,14 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const mersenne_1 = __importDefault(require("mersenne"));
-class Random {
+import mersenne from 'mersenne';
+export default class Random {
     constructor(seed = 0) {
-        mersenne_1.default.seed(seed);
+        mersenne.seed(seed);
     }
     static seed(seed) {
-        mersenne_1.default.seed(seed);
+        mersenne.seed(seed);
     }
     static random() {
         let N = 1000;
-        return mersenne_1.default.rand(N) / (N - 1);
+        return mersenne.rand(N) / (N - 1);
     }
     static randi(min = 0, max = 1) {
         return Math.round(Random.randf(min, max));
@@ -38,4 +33,3 @@ class Random {
         return arr;
     }
 }
-exports.default = Random;

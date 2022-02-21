@@ -1,13 +1,7 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CachedCurve = void 0;
-const three_1 = require("three");
-const MathUtils_1 = __importDefault(require("./MathUtils"));
-const TMP = new three_1.Vector3();
-class CachedCurve {
+import { Vector3 } from "three";
+import MathUtils from "./MathUtils";
+const TMP = new Vector3();
+export class CachedCurve {
     constructor(curve, nPoints = 100) {
         this.points = curve.getPoints(nPoints);
         this.curve = curve;
@@ -17,12 +11,14 @@ class CachedCurve {
         const T = t * (this.nPoints - 1);
         const k1 = ~~(T);
         const k2 = k1 != T ? Math.min(this.nPoints - 1, Math.ceil(T)) : k1;
-        if (k1 === k2)
+        if (k1 === k2) {
+            if (target != null)
+                return target.copy(this.points[k1]);
             return this.points[k1];
-        const fract = MathUtils_1.default.fract(T);
+        }
+        const fract = MathUtils.fract(T);
         if (target != null)
             return target.copy(this.points[k1]).lerp(this.points[k2], fract);
         return TMP.copy(this.points[k1]).lerp(this.points[k2], fract);
     }
 }
-exports.CachedCurve = CachedCurve;
