@@ -3,6 +3,8 @@ import { Texture } from "three";
 const RAD2DEG = 180 / Math.PI;
 const DEG2RAD = Math.PI / 180;
 
+export type FitType = 'cover' | 'contain';
+
 export function createTextureFromFile (file:File, handler:Function=null) {
 	if(file.type.indexOf("image") === -1) console.warn("File is not an Image!");
 	let reader  = new FileReader();
@@ -86,15 +88,15 @@ export function getTextureRatio(texture:Texture): number {
  * @param viewport size of viewport (usually window)
  * @returns scale factor you need to apply
  */
-export function fitRectToViewport (rect:Size, viewport:Size=getWindowSize()): number {
+export function fitRectToViewport (rect:Size, viewport:Size=getWindowSize(), fit:FitType='cover'): number {
 	const vratio = getRatio(viewport);
 	const ratio = getRatio(rect);
 
 	if(ratio > vratio) {
-		return viewport.height / rect.height;
+		return fit == 'cover' ? viewport.height / rect.height : viewport.width / rect.width;
 	}
 
-	return viewport.width / rect.width;
+	return fit == 'cover' ? viewport.width / rect.width : viewport.height / rect.height;
 }
 
 /**
@@ -120,8 +122,8 @@ export function getTextureViewportRect(texture:Texture, viewport:Size=getWindowS
  * @param viewport Viewport's Size
  * @returns Target Size
  */
- export function getSizeViewportRect(rect:Size, viewport:Size=getWindowSize()): Size {
-	const scl = fitRectToViewport(rect, viewport);
+ export function getSizeViewportRect(rect:Size, viewport:Size=getWindowSize(), fit:FitType='cover'): Size {
+	const scl = fitRectToViewport(rect, viewport, fit);
 	return {
 		width: rect.width * scl,
 		height: rect.height * scl

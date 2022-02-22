@@ -36,13 +36,13 @@ export function getTextureSize(texture) {
 export function getTextureRatio(texture) {
     return getRatio(texture.image);
 }
-export function fitRectToViewport(rect, viewport = getWindowSize()) {
+export function fitRectToViewport(rect, viewport = getWindowSize(), fit = 'cover') {
     const vratio = getRatio(viewport);
     const ratio = getRatio(rect);
     if (ratio > vratio) {
-        return viewport.height / rect.height;
+        return fit == 'cover' ? viewport.height / rect.height : viewport.width / rect.width;
     }
-    return viewport.width / rect.width;
+    return fit == 'cover' ? viewport.width / rect.width : viewport.height / rect.height;
 }
 export function getTextureViewportRect(texture, viewport = getWindowSize()) {
     const scl = fitRectToViewport(texture.image, viewport);
@@ -52,8 +52,8 @@ export function getTextureViewportRect(texture, viewport = getWindowSize()) {
         height: tSize.height * scl
     };
 }
-export function getSizeViewportRect(rect, viewport = getWindowSize()) {
-    const scl = fitRectToViewport(rect, viewport);
+export function getSizeViewportRect(rect, viewport = getWindowSize(), fit = 'cover') {
+    const scl = fitRectToViewport(rect, viewport, fit);
     return {
         width: rect.width * scl,
         height: rect.height * scl
