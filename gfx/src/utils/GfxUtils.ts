@@ -106,8 +106,8 @@ export function fitRectToViewport (rect:Size, viewport:Size=getWindowSize(), fit
  * @param viewport Viewport's Size
  * @returns Target Size
  */
-export function getTextureViewportRect(texture:Texture, viewport:Size=getWindowSize()): Size {
-	const scl = fitRectToViewport(texture.image, viewport);
+export function getTextureViewportRect(texture:Texture, viewport:Size=getWindowSize(), fit:FitType='cover'): Size {
+	const scl = fitRectToViewport(texture.image, viewport, fit);
 	const tSize = texture.image;
 	return {
 		width: tSize.width * scl,

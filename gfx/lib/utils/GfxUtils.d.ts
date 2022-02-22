@@ -12,5 +12,5 @@ export declare function getWindowSize(): Size;
 export declare function getTextureSize(texture: Texture): Size;
 export declare function getTextureRatio(texture: Texture): number;
 export declare function fitRectToViewport(rect: Size, viewport?: Size, fit?: FitType): number;
-export declare function getTextureViewportRect(texture: Texture, viewport?: Size): Size;
+export declare function getTextureViewportRect(texture: Texture, viewport?: Size, fit?: FitType): Size;
 export declare function getSizeViewportRect(rect: Size, viewport?: Size, fit?: FitType): Size;
