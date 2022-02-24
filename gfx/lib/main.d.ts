@@ -12,4 +12,5 @@ import SceneUtils from './utils/SceneUtils';
 export * from './utils/GfxUtils';
 export * from './sim/Simulator';
 export * from './sim/LEDScreenTile';
+export * from './utils/EquirectangularToCubemap';
 export { glInfo, FboHelper, FboUtils, RenderComposer, RenderPass, BlurPass, DoFPass, FXAAPass, Sketch, WebGLSketch, SceneUtils };
