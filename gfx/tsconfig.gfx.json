@@ -9,11 +9,18 @@
 	  "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
 	  "removeComments": true,
 	  "declaration": true,
+	  "skipLibCheck": true,
 	  "moduleResolution": "node",
-	  "baseUrl": "src"
+	  "baseUrl": "src",
+	  "resolveJsonModule": true,
+	  "lib": ["DOM", "ESNext", "ES2019"],
 	},
 	"include": [
 	  "src/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"./lib"
 	]
   }
   

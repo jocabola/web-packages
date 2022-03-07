@@ -1,7 +1,7 @@
 import { AssetsBundle, GLTFAsset, TextureAsset } from '@jocabola/io';
 import { ACESFilmicToneMapping, Mesh, MeshPhysicalMaterial, PerspectiveCamera, PlaneBufferGeometry, Scene, ShaderLib, Vector2, WebGLRenderer, WebGLRenderTarget } from 'three';
 import { BlurPass, FboUtils, SceneUtils } from '../main';
-import { ReflectorRTT } from 'three/examples/jsm/objects/ReflectorRTT.js'
+import { Reflector } from 'three/examples/jsm/objects/Reflector.js'
 
 const floor = new Mesh(
 	new PlaneBufferGeometry(1, 1),
@@ -17,7 +17,7 @@ const floorShaderRef = {
     value: null
 }
 
-const groundMirror = new ReflectorRTT(new PlaneBufferGeometry(1, 1), {
+const groundMirror = new Reflector(new PlaneBufferGeometry(1, 1), {
 	clipBias: 0.003,
 	textureWidth: window.innerWidth,
 	textureHeight: window.innerHeight,
