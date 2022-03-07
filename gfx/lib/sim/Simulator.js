@@ -84,6 +84,9 @@ export class Simulator {
             floorShaderRef.value.uniforms.resolution.value.set(width, height);
         }
     }
+    get floor() {
+        return floor;
+    }
     get bundle() {
         return bundle;
     }

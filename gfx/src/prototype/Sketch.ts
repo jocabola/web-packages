@@ -30,9 +30,14 @@ export default class Sketch {
 			this._raf = customRaf;
 		}
 
-		this._rafId = requestAnimationFrame(this._raf);
+		this.addEventListeners();
 
+		this._rafId = requestAnimationFrame(this._raf);
 		return this._rafId;
+	}
+
+	addEventListeners() {
+
 	}
 
 	pause() {

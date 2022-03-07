@@ -18,10 +18,14 @@ export const downloadFile = (cnt:ArrayBuffer|string, filename:string) => {
 	document.body.removeChild(link);
 }
 
-export const addFileDropHandler = (el:HTMLElement, dropHandler:Function, overHandler?:Function) => {
+export const addFileDropHandler = (el:HTMLElement, dropHandler:Function, overHandler?:Function, leaveHandler?:Function) => {
 	el.addEventListener("dragover", (ev:DragEvent) => {
 		ev.preventDefault();
 		if(overHandler !== undefined) overHandler(ev);
+	});
+	el.addEventListener("dragleave", (ev:DragEvent) => {
+		// ev.preventDefault();
+		if(leaveHandler !== undefined) leaveHandler(ev);
 	});
 	el.addEventListener("drop", (ev:DragEvent) => {
 		ev.preventDefault();

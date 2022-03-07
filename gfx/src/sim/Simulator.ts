@@ -124,6 +124,10 @@ export class Simulator {
         }
     }
 
+    get floor():Mesh {
+        return floor;
+    }
+
     get bundle(): AssetsBundle {
         return bundle;
     }

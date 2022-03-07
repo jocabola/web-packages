@@ -13,11 +13,15 @@ var downloadFile = function (cnt, filename) {
     document.body.removeChild(link);
 };
 exports.downloadFile = downloadFile;
-var addFileDropHandler = function (el, dropHandler, overHandler) {
+var addFileDropHandler = function (el, dropHandler, overHandler, leaveHandler) {
     el.addEventListener("dragover", function (ev) {
         ev.preventDefault();
         if (overHandler !== undefined)
             overHandler(ev);
+    });
+    el.addEventListener("dragleave", function (ev) {
+        if (leaveHandler !== undefined)
+            leaveHandler(ev);
     });
     el.addEventListener("drop", function (ev) {
         ev.preventDefault();

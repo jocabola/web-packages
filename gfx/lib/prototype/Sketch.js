@@ -23,8 +23,11 @@ export default class Sketch {
         else {
             this._raf = customRaf;
         }
+        this.addEventListeners();
         this._rafId = requestAnimationFrame(this._raf);
         return this._rafId;
+    }
+    addEventListeners() {
     }
     pause() {
         if (!this._started)

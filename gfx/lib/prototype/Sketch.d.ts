@@ -6,6 +6,7 @@ export default class Sketch {
     constructor();
     get started(): boolean;
     start(customRaf?: FrameRequestCallback): number;
+    addEventListeners(): void;
     pause(): void;
     resume(): void;
     update(): void;
