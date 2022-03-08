@@ -20,6 +20,7 @@ var addFileDropHandler = function (el, dropHandler, overHandler, leaveHandler) {
             overHandler(ev);
     });
     el.addEventListener("dragleave", function (ev) {
+        ev.preventDefault();
         if (leaveHandler !== undefined)
             leaveHandler(ev);
     });

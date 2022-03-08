@@ -24,7 +24,7 @@ export const addFileDropHandler = (el:HTMLElement, dropHandler:Function, overHan
 		if(overHandler !== undefined) overHandler(ev);
 	});
 	el.addEventListener("dragleave", (ev:DragEvent) => {
-		// ev.preventDefault();
+		ev.preventDefault();
 		if(leaveHandler !== undefined) leaveHandler(ev);
 	});
 	el.addEventListener("drop", (ev:DragEvent) => {
