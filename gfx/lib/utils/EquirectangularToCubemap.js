@@ -1,6 +1,8 @@
-import { BackSide, CubeCamera, IcosahedronBufferGeometry, Mesh, MeshBasicMaterial, Scene, WebGLCubeRenderTarget } from "three";
+import { BackSide, CubeCamera, Mesh, MeshBasicMaterial, Scene, SphereBufferGeometry, WebGLCubeRenderTarget } from "three";
+const GEO = new SphereBufferGeometry(100, 64, 64);
 export class EquirectangularToCubemap {
     constructor(renderer, _size = 256) {
+        this.scene = new Scene();
         this.renderer = renderer;
         this.scene = new Scene();
         var gl = this.renderer.getContext();
@@ -12,7 +14,7 @@ export class EquirectangularToCubemap {
             map: null,
             side: BackSide
         });
-        this.mesh = new Mesh(new IcosahedronBufferGeometry(100, 4), this.material);
+        this.mesh = new Mesh(GEO, this.material);
         this.scene.add(this.mesh);
     }
     convert(source) {

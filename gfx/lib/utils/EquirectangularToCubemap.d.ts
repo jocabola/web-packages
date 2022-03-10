@@ -1,12 +1,12 @@
-import { CubeCamera, Mesh, MeshBasicMaterial, Scene, Texture, WebGLCubeRenderTarget, WebGLRenderer } from "three";
+import { CubeCamera, CubeTexture, Mesh, MeshBasicMaterial, Scene, WebGLCubeRenderTarget, WebGLRenderer } from "three";
 export declare class EquirectangularToCubemap {
     renderer: WebGLRenderer;
-    mesh: Mesh;
     scene: Scene;
+    rt: WebGLCubeRenderTarget;
     camera: CubeCamera;
     material: MeshBasicMaterial;
-    rt: WebGLCubeRenderTarget;
+    mesh: Mesh;
     constructor(renderer: WebGLRenderer, _size?: number);
-    convert(source: Texture): Texture;
-    get texture(): Texture;
+    convert(source: any): CubeTexture;
+    get texture(): CubeTexture;
 }
