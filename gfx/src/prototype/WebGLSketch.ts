@@ -21,6 +21,7 @@ export default class WebGLSketch extends Sketch {
 	clock:Clock;
 	size:Vector2;
 	pixelRatio:number;
+	vrMode:boolean = false;
 
 	constructor(width:number=window.innerWidth, height:number=window.innerHeight, opts:RenderOptions={}, autoStart:boolean=false) {
 		super();
@@ -59,7 +60,35 @@ export default class WebGLSketch extends Sketch {
 	start(customRaf:FrameRequestCallback=null) {
 		if(this.started) return;
 		this.clock = new Clock(true);
+		if(this.vrMode) {
+			this._started = true;
+			this._raf = customRaf ? customRaf : () => {
+				this.update();
+				this.render();
+			};
+			this.renderer.setAnimationLoop(this._raf);
+
+			return 1;
+		}
 		return super.start(customRaf);
+	}
+
+	pause() {
+		if(!this._started) return;
+		if(this._paused) return;
+		this._paused = true;
+		if(!this.vrMode) cancelAnimationFrame(this._rafId);
+		else {
+			this.renderer.setAnimationLoop(null);
+		}
+	}
+
+	resume() {
+		if(!this._started) return;
+		if(!this._paused) return;
+		this._paused = false;
+		if(!this.vrMode) this._rafId = requestAnimationFrame(this._raf);
+		else this.renderer.setAnimationLoop(this._raf);
 	}
 
 	get domElement ():HTMLCanvasElement {

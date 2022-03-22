@@ -3,6 +3,7 @@ import Sketch from "./Sketch";
 export default class WebGLSketch extends Sketch {
     constructor(width = window.innerWidth, height = window.innerHeight, opts = {}, autoStart = false) {
         super();
+        this.vrMode = false;
         this.size = new Vector2();
         this.scene = new Scene();
         if (opts.ortho) {
@@ -24,7 +25,39 @@ export default class WebGLSketch extends Sketch {
         if (this.started)
             return;
         this.clock = new Clock(true);
+        if (this.vrMode) {
+            this._started = true;
+            this._raf = customRaf ? customRaf : () => {
+                this.update();
+                this.render();
+            };
+            this.renderer.setAnimationLoop(this._raf);
+            return 1;
+        }
         return super.start(customRaf);
+    }
+    pause() {
+        if (!this._started)
+            return;
+        if (this._paused)
+            return;
+        this._paused = true;
+        if (!this.vrMode)
+            cancelAnimationFrame(this._rafId);
+        else {
+            this.renderer.setAnimationLoop(null);
+        }
+    }
+    resume() {
+        if (!this._started)
+            return;
+        if (!this._paused)
+            return;
+        this._paused = false;
+        if (!this.vrMode)
+            this._rafId = requestAnimationFrame(this._raf);
+        else
+            this.renderer.setAnimationLoop(this._raf);
     }
     get domElement() {
         return this.renderer.domElement;

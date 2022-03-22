@@ -15,8 +15,11 @@ export default class WebGLSketch extends Sketch {
     clock: Clock;
     size: Vector2;
     pixelRatio: number;
+    vrMode: boolean;
     constructor(width?: number, height?: number, opts?: RenderOptions, autoStart?: boolean);
     start(customRaf?: FrameRequestCallback): number;
+    pause(): void;
+    resume(): void;
     get domElement(): HTMLCanvasElement;
     resize(width: number, height: number): void;
     render(): void;
