@@ -1,6 +1,6 @@
 /*
  * Utils
- * 
+ *
  */
 
 export function el (type:string, className?:string, parent?:HTMLElement):HTMLElement {
@@ -33,7 +33,17 @@ export function isBrowser(vendor:string):boolean {
 }
 
 export function isSafari():boolean {
-	return !isBrowser("Chrome") && isBrowser("Safari");
+	// Safari on iPhone:
+	// Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Mobile/15E148 Safari/604.1
+	// Chrome on iPhone (Same as Safari + "CriOS/Version"):
+	// Mozilla/5.0 (iPhone; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/100.0.4896.77 Mobile/15E148 Safari/604.1
+	//
+	// Other browsers don't announce themselves as "Safari", but they have to use Safari's WebView.
+	// Ex: FireFox on iPhone:
+	// Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/98 Mobile/15E148 Version/15.0
+	// Any other iOS app on iPhone:
+	// Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)
+	return !isBrowser("Chrome") && (isBrowser("Safari") || isBrowser("AppleWebKit"));
 }
 
 export function getAndroidVersion():number {
@@ -68,7 +78,7 @@ export function isDesktop():boolean {
 }
 
 export function isTouchDevice ():boolean {
-	return ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 ); 
+	return ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 );
 }
 
 export function hasGetUserMedia():boolean {
@@ -77,6 +87,6 @@ export function hasGetUserMedia():boolean {
 
 export function copyToClipboard(str:string):void {
 	if(navigator.clipboard && navigator.clipboard.writeText){
-		navigator.clipboard.writeText(str) 
+		navigator.clipboard.writeText(str)
 	}
 }
