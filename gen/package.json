@@ -1,6 +1,6 @@
 {
 	"name": "@jocabola/gen",
-	"version": "0.0.1",
+	"version": "0.0.23",
 	"description": "Generative Package written in TypeScript",
 	"main": "lib/main.js",
 	"repository": "git@github.com:jocabola/web-packages.git",

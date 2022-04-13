@@ -1,9 +1,19 @@
 export function getV3FromVA(geo, id, i = 0) {
-    const a = geo.getAttribute(id).array;
+    const attr = geo.getAttribute(id);
+    const a = attr.array;
+    if (!attr.data && !attr.data.stride) {
+        return {
+            x: a[i * 3],
+            y: a[i * 3 + 1],
+            z: a[i * 3 + 2]
+        };
+    }
+    const stride = attr.data.stride;
+    const offset = attr.offset;
     return {
-        x: a[i * 3],
-        y: a[i * 3 + 1],
-        z: a[i * 3 + 2]
+        x: a[i * stride + offset],
+        y: a[i * stride + offset + 1],
+        z: a[i * stride + offset + 2]
     };
 }
 export function getVertex(geo, i = 0) {
@@ -41,7 +51,7 @@ export function addTri(pos, index, p1, p2, width = .1, addP12 = true) {
     }
     pos.push(tri.p3.x, tri.p3.y, tri.p3.z);
     const ilen = pos.length / 3;
-    index.push(ilen - 3, ilen - 1, ilen - 2);
+    index.push(ilen - 3, ilen - 2, ilen - 1);
 }
 export function getQuad(p1, p2, width = .1) {
     const a = Math.atan2(p2.z - p1.z, p2.x - p1.x);
