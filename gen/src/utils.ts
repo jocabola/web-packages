@@ -22,8 +22,31 @@ export function getV3FromVA(geo:BufferGeometry, id:string, i:number=0):pt {
     }
 }
 
+export function getV2FromVA(geo:BufferGeometry, id:string, i:number=0):pt {
+    const attr = geo.getAttribute(id);
+    const a = attr.array;
+    if(!attr.data && !attr.data.stride) {
+        return {
+            x: a[i*2],
+            y: a[i*2+1]
+        }
+    }
+
+    const stride = attr.data.stride;
+    const offset = attr.offset;
+
+    return {
+        x: a[i*stride + offset],
+        y: a[i*stride + offset+1]
+    }
+}
+
 export function getVertex(geo:BufferGeometry, i:number=0):pt {
     return getV3FromVA(geo, 'position', i);
+}
+
+export function getUV(geo:BufferGeometry, i:number=0):pt {
+    return getV2FromVA(geo, 'uv', i);
 }
 
 export function getNormal(geo:BufferGeometry, i:number=0):pt {

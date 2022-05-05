@@ -1,7 +1,7 @@
 export declare type pt = {
     x: number;
     y: number;
-    z: number;
+    z?: number;
 };
 export declare type F = {
     v: pt;

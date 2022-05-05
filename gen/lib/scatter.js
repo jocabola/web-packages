@@ -15,6 +15,19 @@ export function pointInTriangle(p1, p2, p3, a, b) {
         z: pZ
     };
 }
+export function uvInTriangle(p1, p2, p3, a, b) {
+    if (a + b > 1) {
+        a = 1 - a;
+        b = 1 - b;
+    }
+    let c = 1 - a - b;
+    let pX = (a * p1.x) + (b * p2.x) + (c * p3.x);
+    let pY = (a * p1.y) + (b * p2.y) + (c * p3.y);
+    return {
+        x: pX,
+        y: pY
+    };
+}
 export function randomPointOnTriangle(geo, i1, i2, i3) {
     const p1 = getVertex(geo, i1);
     const p2 = getVertex(geo, i2);

@@ -1,7 +1,7 @@
 export type pt = {
     x:number,
     y:number,
-    z:number
+    z?:number
 }
 
 export type F = {
