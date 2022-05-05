@@ -6,6 +6,7 @@ export declare type pt = {
 export declare type F = {
     v: pt;
     n: pt;
+    uv?: pt;
 };
 export declare type Tri = {
     p1: pt;

@@ -6,7 +6,8 @@ export type pt = {
 
 export type F = {
     v:pt,
-    n:pt
+    n:pt,
+    uv?:pt
 }
 
 export type Tri = {

@@ -1,7 +1,7 @@
 import { Random } from "@jocabola/math";
 import { BufferGeometry } from "three";
 import { pt, F } from "./types";
-import { getNormal, getVertex } from "./utils";
+import { getNormal, getUV, getVertex } from "./utils";
 
 export function pointInTriangle(p1:pt, p2:pt, p3:pt, a:number, b:number):pt {
     if (a + b > 1) {
@@ -48,7 +48,7 @@ export function randomPointOnTriangle(geo:BufferGeometry, i1:number, i2:number, 
     return pointInTriangle(p1, p2, p3, a, b);
 }
 
-export function randomFOnTriangle(geo:BufferGeometry, i1:number, i2:number, i3:number):F {
+export function randomFOnTriangle(geo:BufferGeometry, i1:number, i2:number, i3:number, withUV:boolean=false):F {
     const p1 = getVertex(geo, i1);
     const p2 = getVertex(geo, i2);
     const p3 = getVertex(geo, i3);
@@ -59,6 +59,17 @@ export function randomFOnTriangle(geo:BufferGeometry, i1:number, i2:number, i3:n
 
     let a = Random.randf(0,1);
     let b = Random.randf(0,1);
+
+    if(withUV) {
+        const uv1 = getUV(geo, i1);
+        const uv2 = getUV(geo, i2);
+        const uv3 = getUV(geo, i3);
+        return {
+            v: pointInTriangle(p1, p2, p3, a, b),
+            n: pointInTriangle(n1, n2, n3, a, b),
+            uv: uvInTriangle(uv1, uv2, uv3, a, b)
+        }
+    }
 
     return {
         v: pointInTriangle(p1, p2, p3, a, b),
