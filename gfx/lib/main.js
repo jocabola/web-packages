@@ -7,7 +7,7 @@ import BlurPass from './composer/BlurPass';
 import DoFPass from './composer/DoFPass';
 import FXAAPass from './composer/FXAAPass';
 import Sketch from './prototype/Sketch';
-import WebGLSketch from './prototype/WebGLSketch';
+import { WebGLSketch } from './prototype/WebGLSketch';
 import SceneUtils from './utils/SceneUtils';
 export * from './utils/GfxUtils';
 export * from './sim/Simulator';

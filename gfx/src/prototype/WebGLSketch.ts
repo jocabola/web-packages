@@ -5,7 +5,7 @@
 import { Clock, OrthographicCamera, PerspectiveCamera, Scene, Vector2, WebGLRenderer } from "three";
 import Sketch from "./Sketch";
 
-type RenderOptions = {
+export type RenderOptions = {
 	antialias?:boolean;
 	alpha?:boolean;
 	ortho?:boolean;
@@ -14,7 +14,7 @@ type RenderOptions = {
 	far?:number;
 }
 
-export default class WebGLSketch extends Sketch {
+export class WebGLSketch extends Sketch {
 	renderer:WebGLRenderer;
 	scene:Scene;
 	camera:PerspectiveCamera|OrthographicCamera;

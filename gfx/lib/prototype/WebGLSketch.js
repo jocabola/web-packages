@@ -1,6 +1,6 @@
 import { Clock, OrthographicCamera, PerspectiveCamera, Scene, Vector2, WebGLRenderer } from "three";
 import Sketch from "./Sketch";
-export default class WebGLSketch extends Sketch {
+export class WebGLSketch extends Sketch {
     constructor(width = window.innerWidth, height = window.innerHeight, opts = {}, autoStart = false) {
         super();
         this.vrMode = false;
