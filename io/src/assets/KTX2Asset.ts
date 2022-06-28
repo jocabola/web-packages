@@ -1,6 +1,6 @@
 import { WebGLRenderer } from "three";
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
-import { TextureOptions } from "../utils/TextureUtils";
+import { TextureOptions, TextureUtils } from "../utils/TextureUtils";
 import TextureAsset from "./TextureAsset";
 
 const ktx2Loader = new KTX2Loader();
@@ -18,7 +18,7 @@ export default class KTX2Asset extends TextureAsset {
 	load(callback=null) {
 		if(this._loaded) return;
 		ktx2Loader.load(this.url, (texture) => {
-			// TextureUtils.applyTextureOptions(texture, this.options);
+			TextureUtils.applyTextureOptions(texture, this.options);
 			// texture.encoding = sRGBEncoding;
 			this.content = texture;
 			if (callback != null) callback();

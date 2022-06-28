@@ -10,7 +10,7 @@ import { Vec } from "@jocabola/math";
 /*
  * Particle States
  */
-const enum State {
+export const enum State {
 	ALIVE,
 	LOCKED,
 	IDLE,
@@ -22,7 +22,7 @@ const enum State {
  * Ignore Z values (default 0) if 2D
  */
 
-class Particle {
+export class Particle {
 	id:number
 	age:number
 	lifetime:number
@@ -97,7 +97,7 @@ class Particle {
 /*
  * Verlet Spring
  */
-class Spring {
+export class Spring {
 	a:Particle
 	b:Particle
 	strength:number
@@ -126,10 +126,4 @@ class Spring {
 			this.b.position.sub(delta);
 		}
 	}
-}
-
-export {
-	State,
-	Particle,
-	Spring
 }
