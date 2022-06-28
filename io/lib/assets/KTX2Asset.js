@@ -1,5 +1,4 @@
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
-import { TextureUtils } from "../utils/TextureUtils";
 import TextureAsset from "./TextureAsset";
 const ktx2Loader = new KTX2Loader();
 export default class KTX2Asset extends TextureAsset {
@@ -14,7 +13,6 @@ export default class KTX2Asset extends TextureAsset {
         if (this._loaded)
             return;
         ktx2Loader.load(this.url, (texture) => {
-            TextureUtils.applyTextureOptions(texture, this.options);
             this.content = texture;
             if (callback != null)
                 callback();
