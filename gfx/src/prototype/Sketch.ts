@@ -7,6 +7,7 @@ export default class Sketch {
 	protected _paused:boolean = false;
 	protected _raf:FrameRequestCallback = null;
 	protected _rafId:number = -1;
+	private _startTime:number = 0;
 	constructor () {
 		this._started = false;
 	}
@@ -32,6 +33,8 @@ export default class Sketch {
 
 		this.addEventListeners();
 
+		this._startTime = performance.now();
+
 		this._rafId = requestAnimationFrame(this._raf);
 		return this._rafId;
 	}
@@ -54,7 +57,12 @@ export default class Sketch {
 		this._rafId = requestAnimationFrame(this._raf);
 	}
 
-	update() {}
+	update() {
+		const time = performance.now() - this._startTime;
+		this.manualUpdate(time);
+	}
+
+	manualUpdate(time:number) {}
 
 	render() {}
 }

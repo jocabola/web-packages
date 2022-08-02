@@ -3,6 +3,7 @@ export default class Sketch {
         this._paused = false;
         this._raf = null;
         this._rafId = -1;
+        this._startTime = 0;
         this._started = false;
     }
     get started() {
@@ -24,6 +25,7 @@ export default class Sketch {
             this._raf = customRaf;
         }
         this.addEventListeners();
+        this._startTime = performance.now();
         this._rafId = requestAnimationFrame(this._raf);
         return this._rafId;
     }
@@ -45,6 +47,10 @@ export default class Sketch {
         this._paused = false;
         this._rafId = requestAnimationFrame(this._raf);
     }
-    update() { }
+    update() {
+        const time = performance.now() - this._startTime;
+        this.manualUpdate(time);
+    }
+    manualUpdate(time) { }
     render() { }
 }
