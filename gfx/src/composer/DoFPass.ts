@@ -1,5 +1,5 @@
 import { RawShaderMaterial, ShaderChunk, WebGLRenderer } from "three";
-import BlurPass from './BlurPass';
+import { BlurPass, BlurSettings } from './BlurPass';
 import RenderPass from './RenderPass';
 import RenderComposer from "./RenderComposer";
 
@@ -23,23 +23,22 @@ const SHADER = new RawShaderMaterial({
 })
 
 class DoFSettings {
-	blurScale?:number;
+	blur?:BlurSettings;
 	camNear?:number;
 	camFar?:number;
-	blurRadius?:number;
-	blurIterations?:number;
-	blurQuality?:0|1|2;
 	focalDistance?:number;
 	aperture?:number;
 }
 
 const DEFAULTS:DoFSettings = {
-	blurScale: .25,
+	blur: {
+		scale: .25,
+		radius: 2,
+		iterations: 4,
+		quality: 0
+	},
 	camNear: 0,
 	camFar: 100,
-	blurRadius: 2,
-	blurIterations: 4,
-	blurQuality: 0,
 	focalDistance: 1,
 	aperture: 5
 }
@@ -53,10 +52,7 @@ export default class DoFPass extends RenderPass {
 			null,
 			width,
 			height,
-			settings.blurScale || DEFAULTS.blurScale,
-			settings.blurRadius || DEFAULTS.blurRadius,
-			settings.blurIterations || DEFAULTS.blurIterations,
-			settings.blurQuality || DEFAULTS.blurQuality);
+			settings.blur);
 
 		ShaderChunk.depth = depth;
 

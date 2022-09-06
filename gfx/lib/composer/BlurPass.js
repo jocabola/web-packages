@@ -1,15 +1,25 @@
-import { Mesh, OrthographicCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, Vector2 } from "three";
+import { Mesh, OrthographicCamera, PlaneGeometry, RawShaderMaterial, RGBAFormat, Scene, Vector2 } from "three";
 import FboUtils from '../utils/FboUtils';
 import RenderPass from "./RenderPass";
 import vert from '../glsl/fbo.vert';
 import frag from '../glsl/vfx/blur.frag';
-export default class BlurPass extends RenderPass {
-    constructor(src, width, height, scale = .25, radius = 2.0, iterations = 4, quality = 0) {
+const BlurDefaults = {
+    scale: 1,
+    radius: 1,
+    iterations: 4,
+    quality: 0
+};
+export class BlurPass extends RenderPass {
+    constructor(src, width, height, settings = BlurDefaults) {
         super();
         this.radius = 2;
         this.iterations = 4;
         this.quality = 0;
         this.source = src;
+        const scale = settings.scale || BlurDefaults.scale;
+        const radius = settings.radius || BlurDefaults.radius;
+        const iterations = settings.iterations || BlurDefaults.iterations;
+        const quality = settings.quality || BlurDefaults.quality;
         this.ping = FboUtils.getRenderTarget(width * scale, height * scale, {
             format: RGBAFormat
         });
@@ -44,7 +54,7 @@ export default class BlurPass extends RenderPass {
         this.camera = new OrthographicCamera(-w, w, h, -h, 0, 100);
         this.camera.position.z = 1;
         this.scene.add(this.camera);
-        this.quad = new Mesh(new PlaneBufferGeometry(1, 1), this.shader);
+        this.quad = new Mesh(new PlaneGeometry(1, 1), this.shader);
         this.quad.scale.set(width * scale, height * scale, 1);
         this.scene.add(this.quad);
     }

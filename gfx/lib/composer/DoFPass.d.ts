@@ -1,13 +1,11 @@
 import { WebGLRenderer } from "three";
+import { BlurSettings } from './BlurPass';
 import RenderPass from './RenderPass';
 import RenderComposer from "./RenderComposer";
 declare class DoFSettings {
-    blurScale?: number;
+    blur?: BlurSettings;
     camNear?: number;
     camFar?: number;
-    blurRadius?: number;
-    blurIterations?: number;
-    blurQuality?: 0 | 1 | 2;
     focalDistance?: number;
     aperture?: number;
 }

@@ -1,4 +1,4 @@
-import { Mesh, OrthographicCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, Texture, Vector2, WebGLRenderer, WebGLRenderTarget } from "three";
+import { Mesh, OrthographicCamera, PlaneGeometry, RawShaderMaterial, RGBAFormat, Scene, Texture, Vector2, WebGLRenderer, WebGLRenderTarget } from "three";
 import FboUtils from '../utils/FboUtils';
 import RenderPass from "./RenderPass";
 import RenderComposer from "./RenderComposer";
@@ -6,9 +6,23 @@ import RenderComposer from "./RenderComposer";
 import vert from '../glsl/fbo.vert';
 import frag from '../glsl/vfx/blur.frag'
 
-type BlurQuality = 0|1|2;
+export type BlurQuality = 0|1|2;
 
-export default class BlurPass extends RenderPass{
+export type BlurSettings = {
+	scale?: number;
+	radius?: number;
+	iterations?: number;
+	quality?:BlurQuality;
+}
+
+const BlurDefaults:BlurSettings = {
+	scale: 1,
+	radius: 1,
+	iterations: 4,
+	quality: 0
+}
+
+export class BlurPass extends RenderPass{
 	radius:number = 2;
 	iterations:number = 4;
 	quality:BlurQuality = 0;
@@ -19,10 +33,15 @@ export default class BlurPass extends RenderPass{
 	camera:OrthographicCamera;
 	quad:Mesh;
 	source:Texture;
-	constructor(src:Texture|null, width:number, height:number, scale:number=.25, radius:number=2.0, iterations:number=4, quality:BlurQuality=0){
+	constructor(src:Texture|null, width:number, height:number, settings:BlurSettings=BlurDefaults){
 		super();
 
 		this.source = src;
+
+		const scale = settings.scale || BlurDefaults.scale;
+		const radius = settings.radius || BlurDefaults.radius;
+		const iterations = settings.iterations || BlurDefaults.iterations;
+		const quality = settings.quality || BlurDefaults.quality;
 
 		this.ping = FboUtils.getRenderTarget(width*scale, height*scale,{
 			format:RGBAFormat
@@ -63,7 +82,7 @@ export default class BlurPass extends RenderPass{
 		this.scene.add(this.camera);
 
 		this.quad = new Mesh(
-			new PlaneBufferGeometry(1,1),
+			new PlaneGeometry(1,1),
 			this.shader
 		);
 		this.quad.scale.set(width*scale,height*scale,1);

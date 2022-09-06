@@ -1,4 +1,4 @@
-import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Mesh, OrthographicCamera, PerspectiveCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, UnsignedByteType, UnsignedShortType, WebGLRenderer, WebGLRenderTarget } from "three";
+import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Mesh, OrthographicCamera, PerspectiveCamera, PlaneGeometry, RawShaderMaterial, RGBAFormat, Scene, UnsignedByteType, UnsignedShortType, WebGLRenderer, WebGLRenderTarget } from "three";
 import frag from '../glsl/fbo.frag';
 import vert from '../glsl/fbo.vert';
 import RenderPass from "./RenderPass";
@@ -54,7 +54,7 @@ export default class RenderComposer {
 		this.scene.add(this.camera);
 
 		this.quad = new Mesh(
-			new PlaneBufferGeometry(1,1),
+			new PlaneGeometry(1,1),
 			null
 		);
 		this.quad.scale.set(width,height,1);

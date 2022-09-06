@@ -1,8 +1,8 @@
 import { AssetsBundle, GLTFAsset, TextureAsset } from '@jocabola/io';
-import { ACESFilmicToneMapping, Mesh, MeshPhysicalMaterial, PerspectiveCamera, PlaneBufferGeometry, Scene, ShaderLib, Vector2 } from 'three';
+import { ACESFilmicToneMapping, Mesh, MeshPhysicalMaterial, PerspectiveCamera, PlaneGeometry, Scene, ShaderLib, Vector2 } from 'three';
 import { BlurPass, FboUtils, SceneUtils } from '../main';
 import { Reflector } from 'three/examples/jsm/objects/Reflector.js';
-const floor = new Mesh(new PlaneBufferGeometry(1, 1), new MeshPhysicalMaterial({
+const floor = new Mesh(new PlaneGeometry(1, 1), new MeshPhysicalMaterial({
     color: 0x999999,
     roughness: .3,
     metalness: .1,
@@ -11,7 +11,7 @@ const floor = new Mesh(new PlaneBufferGeometry(1, 1), new MeshPhysicalMaterial({
 const floorShaderRef = {
     value: null
 };
-const groundMirror = new Reflector(new PlaneBufferGeometry(1, 1), {
+const groundMirror = new Reflector(new PlaneGeometry(1, 1), {
     clipBias: 0.003,
     textureWidth: window.innerWidth,
     textureHeight: window.innerHeight,
@@ -28,6 +28,12 @@ export const Figures = {
     male: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/male.glb'),
     male2: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/male2.glb')
 };
+const BLUR_DEF = {
+    scale: .25,
+    radius: 1,
+    iterations: 4,
+    quality: 2
+};
 export class Simulator {
     constructor(renderer) {
         this.isLoading = false;
@@ -40,7 +46,7 @@ export class Simulator {
         this.camera.position.z = 12;
         this.camera.position.y = 8;
         this.rt = FboUtils.getRenderTarget(_size.width * RT_SCALE, _size.height * RT_SCALE, {}, true);
-        this.blur = new BlurPass(groundMirror.getRenderTarget().texture, _size.width, _size.height, .25, 1, 4, 2);
+        this.blur = new BlurPass(groundMirror.getRenderTarget().texture, _size.width, _size.height, BLUR_DEF);
         floor.rotateX(-Math.PI / 2);
         groundMirror.rotateX(-Math.PI / 2);
         this.scene.add(floor);

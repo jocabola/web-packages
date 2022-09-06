@@ -1,4 +1,4 @@
-import { Material, Mesh, OrthographicCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, Texture, Vector2, WebGLMultipleRenderTargets, WebGLRenderer, WebGLRenderTarget } from 'three';
+import { Material, Mesh, OrthographicCamera, PlaneGeometry, RawShaderMaterial, RGBAFormat, Scene, Texture, Vector2, WebGLMultipleRenderTargets, WebGLRenderer, WebGLRenderTarget } from 'three';
 import frag from '../glsl/fbo.frag';
 import vert from '../glsl/fbo.vert';
 
@@ -22,7 +22,7 @@ export default class FboHelper {
 	constructor () {
 		this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
 		this.material = MAT;
-		var postPlane = new PlaneBufferGeometry(1, 1);
+		var postPlane = new PlaneGeometry(1, 1);
 		this.quad = new Mesh(postPlane, this.material);
 		this.scene = new Scene();
 		this.scene.add(this.quad);

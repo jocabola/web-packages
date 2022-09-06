@@ -2,9 +2,9 @@
  * Ported from https://github.com/spite/THREE.EquirectangularToCubemap
  */
 
- import { BackSide, CubeCamera, CubeTexture, Mesh, MeshBasicMaterial, Scene, SphereBufferGeometry, WebGLCubeRenderTarget, WebGLRenderer } from "three";
+ import { BackSide, CubeCamera, CubeTexture, Mesh, MeshBasicMaterial, Scene, SphereGeometry, WebGLCubeRenderTarget, WebGLRenderer } from "three";
 
- const GEO = new SphereBufferGeometry(100, 64, 64);
+ const GEO = new SphereGeometry(100, 64, 64);
  
  export class EquirectangularToCubemap {
      renderer:WebGLRenderer;

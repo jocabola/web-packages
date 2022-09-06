@@ -1,5 +1,5 @@
 import { RawShaderMaterial, ShaderChunk } from "three";
-import BlurPass from './BlurPass';
+import { BlurPass } from './BlurPass';
 import RenderPass from './RenderPass';
 import vert from '../glsl/fbo.vert';
 import frag from '../glsl/vfx/dof.frag';
@@ -21,19 +21,21 @@ const SHADER = new RawShaderMaterial({
 class DoFSettings {
 }
 const DEFAULTS = {
-    blurScale: .25,
+    blur: {
+        scale: .25,
+        radius: 2,
+        iterations: 4,
+        quality: 0
+    },
     camNear: 0,
     camFar: 100,
-    blurRadius: 2,
-    blurIterations: 4,
-    blurQuality: 0,
     focalDistance: 1,
     aperture: 5
 };
 export default class DoFPass extends RenderPass {
     constructor(width, height, settings = {}) {
         super();
-        this.blurPass = new BlurPass(null, width, height, settings.blurScale || DEFAULTS.blurScale, settings.blurRadius || DEFAULTS.blurRadius, settings.blurIterations || DEFAULTS.blurIterations, settings.blurQuality || DEFAULTS.blurQuality);
+        this.blurPass = new BlurPass(null, width, height, settings.blur);
         ShaderChunk.depth = depth;
         this.shader = SHADER;
         SHADER.uniforms.cameraNear.value = settings.camNear || DEFAULTS.camNear;

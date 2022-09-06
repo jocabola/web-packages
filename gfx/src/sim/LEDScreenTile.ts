@@ -1,5 +1,5 @@
 import { MathUtils } from "@jocabola/math";
-import { BoxBufferGeometry, InstancedBufferAttribute, InstancedMesh, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PerspectiveCamera, PlaneBufferGeometry, Texture, Vector3 } from "three";
+import { BoxGeometry, InstancedBufferAttribute, InstancedMesh, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PerspectiveCamera, PlaneGeometry, Texture, Vector3 } from "three";
 
 
 export const SCREEN_MAT = new MeshBasicMaterial({
@@ -52,7 +52,7 @@ export const BASE_MAT = new MeshStandardMaterial({
     metalness: .4
 });
 
-export const BASE_GEO = new BoxBufferGeometry(1, 1, 1);
+export const BASE_GEO = new BoxGeometry(1, 1, 1);
 
 const tmp = new Vector3();
 
@@ -99,7 +99,7 @@ export class LEDScreenTile {
 
         // Pixels
         // const rs = s;
-        const geo = new PlaneBufferGeometry(s, s);
+        const geo = new PlaneGeometry(s, s);
         this.pixels = new InstancedMesh(geo, SCREEN_MAT, pos.length/3);
 
         const uvatt = new InstancedBufferAttribute(
@@ -121,7 +121,7 @@ export class LEDScreenTile {
             this.pixels.setMatrixAt(i, matrix);
         }
 
-        const sgeo = new PlaneBufferGeometry(width, height);
+        const sgeo = new PlaneGeometry(width, height);
         const suv = sgeo.attributes.uv;
         suv.array[0] = crop.u;
         suv.array[1] = crop.v + crop.height;

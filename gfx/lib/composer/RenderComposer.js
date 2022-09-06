@@ -1,4 +1,4 @@
-import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Mesh, OrthographicCamera, PlaneBufferGeometry, RawShaderMaterial, RGBAFormat, Scene, UnsignedByteType, UnsignedShortType, WebGLRenderTarget } from "three";
+import { ClampToEdgeWrapping, DepthTexture, LinearFilter, Mesh, OrthographicCamera, PlaneGeometry, RawShaderMaterial, RGBAFormat, Scene, UnsignedByteType, UnsignedShortType, WebGLRenderTarget } from "three";
 import frag from '../glsl/fbo.frag';
 import vert from '../glsl/fbo.vert';
 const TO_SCREEN = new RawShaderMaterial({
@@ -35,7 +35,7 @@ export default class RenderComposer {
         this.camera = new OrthographicCamera(-w, w, h, -h, 0, 100);
         this.camera.position.z = 1;
         this.scene.add(this.camera);
-        this.quad = new Mesh(new PlaneBufferGeometry(1, 1), null);
+        this.quad = new Mesh(new PlaneGeometry(1, 1), null);
         this.quad.scale.set(width, height, 1);
         this.scene.add(this.quad);
         this.width = width;

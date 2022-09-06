@@ -3,7 +3,7 @@ import FboHelper from './utils/FboHelper';
 import FboUtils from './utils/FboUtils';
 import RenderComposer from './composer/RenderComposer';
 import RenderPass from './composer/RenderPass';
-import BlurPass from './composer/BlurPass';
+import { BlurPass, BlurSettings } from './composer/BlurPass';
 import DoFPass from './composer/DoFPass';
 import FXAAPass from './composer/FXAAPass';
 import Sketch from './prototype/Sketch';
@@ -22,6 +22,7 @@ export {
 	RenderComposer,
 	RenderPass,
 	BlurPass,
+	BlurSettings,
 	DoFPass,
 	FXAAPass,
 	Sketch,

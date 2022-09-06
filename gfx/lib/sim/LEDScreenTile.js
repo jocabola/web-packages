@@ -1,5 +1,5 @@
 import { MathUtils } from "@jocabola/math";
-import { BoxBufferGeometry, InstancedBufferAttribute, InstancedMesh, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PlaneBufferGeometry, Texture, Vector3 } from "three";
+import { BoxGeometry, InstancedBufferAttribute, InstancedMesh, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Object3D, PlaneGeometry, Texture, Vector3 } from "three";
 export const SCREEN_MAT = new MeshBasicMaterial({
     map: new Texture(),
     color: 0xffffff
@@ -24,7 +24,7 @@ export const BASE_MAT = new MeshStandardMaterial({
     roughness: .6,
     metalness: .4
 });
-export const BASE_GEO = new BoxBufferGeometry(1, 1, 1);
+export const BASE_GEO = new BoxGeometry(1, 1, 1);
 const tmp = new Vector3();
 export class LEDScreenTile {
     constructor(width, height, pitch, cols, crop) {
@@ -51,7 +51,7 @@ export class LEDScreenTile {
             y += s;
             j += 1 / h;
         }
-        const geo = new PlaneBufferGeometry(s, s);
+        const geo = new PlaneGeometry(s, s);
         this.pixels = new InstancedMesh(geo, SCREEN_MAT, pos.length / 3);
         const uvatt = new InstancedBufferAttribute(new Float32Array(uv), 2);
         geo.setAttribute("cuv", uvatt);
@@ -63,7 +63,7 @@ export class LEDScreenTile {
             matrix.setPosition(pos[i * 3], pos[i * 3 + 1], 0);
             this.pixels.setMatrixAt(i, matrix);
         }
-        const sgeo = new PlaneBufferGeometry(width, height);
+        const sgeo = new PlaneGeometry(width, height);
         const suv = sgeo.attributes.uv;
         suv.array[0] = crop.u;
         suv.array[1] = crop.v + crop.height;

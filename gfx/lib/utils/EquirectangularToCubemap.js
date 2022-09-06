@@ -1,5 +1,5 @@
-import { BackSide, CubeCamera, Mesh, MeshBasicMaterial, Scene, SphereBufferGeometry, WebGLCubeRenderTarget } from "three";
-const GEO = new SphereBufferGeometry(100, 64, 64);
+import { BackSide, CubeCamera, Mesh, MeshBasicMaterial, Scene, SphereGeometry, WebGLCubeRenderTarget } from "three";
+const GEO = new SphereGeometry(100, 64, 64);
 export class EquirectangularToCubemap {
     constructor(renderer, _size = 256) {
         this.scene = new Scene();

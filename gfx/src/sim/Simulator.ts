@@ -1,10 +1,11 @@
 import { AssetsBundle, GLTFAsset, TextureAsset } from '@jocabola/io';
-import { ACESFilmicToneMapping, Mesh, MeshPhysicalMaterial, PerspectiveCamera, PlaneBufferGeometry, Scene, ShaderLib, Vector2, WebGLRenderer, WebGLRenderTarget } from 'three';
+import { ACESFilmicToneMapping, Mesh, MeshPhysicalMaterial, PerspectiveCamera, PlaneGeometry, Scene, ShaderLib, Vector2, WebGLRenderer, WebGLRenderTarget } from 'three';
 import { BlurPass, FboUtils, SceneUtils } from '../main';
 import { Reflector } from 'three/examples/jsm/objects/Reflector.js'
+import { BlurSettings } from '../composer/BlurPass';
 
 const floor = new Mesh(
-	new PlaneBufferGeometry(1, 1),
+	new PlaneGeometry(1, 1),
 	new MeshPhysicalMaterial({
 		color: 0x999999,
 		roughness: .3,
@@ -17,7 +18,7 @@ const floorShaderRef = {
     value: null
 }
 
-const groundMirror = new Reflector(new PlaneBufferGeometry(1, 1), {
+const groundMirror = new Reflector(new PlaneGeometry(1, 1), {
 	clipBias: 0.003,
 	textureWidth: window.innerWidth,
 	textureHeight: window.innerHeight,
@@ -36,6 +37,13 @@ export const Figures = {
     female: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/female.glb'),
     male: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/male.glb'),
     male2: new GLTFAsset('https://assets.eduprats.com/models/sim/figures/male2.glb')
+}
+
+const BLUR_DEF:BlurSettings = {
+    scale: .25,
+    radius: 1,
+    iterations: 4,
+    quality: 2
 }
 
 /**
@@ -70,8 +78,7 @@ export class Simulator {
             groundMirror.getRenderTarget().texture,
             _size.width,
             _size.height,
-            .25,
-            1, 4, 2
+            BLUR_DEF
         );
 
         floor.rotateX( - Math.PI / 2 );
