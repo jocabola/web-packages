@@ -1,7 +1,7 @@
 export default class glInfo {
     constructor(gl) {
         this.gl = gl;
-        const glExtensionDebugRendererInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        const glExtensionDebugRendererInfo = gl.getExtension('webgl');
         const glExtensionTextureFloat = gl.getExtension('OES_texture_float');
         const glExtensionTextureHalfFloat = gl.getExtension('OES_texture_half_float');
         this.dds = gl.getExtension('WEBGL_compressed_texture_s3tc') ||
