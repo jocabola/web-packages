@@ -1,4 +1,5 @@
 # @jocabola/phy
+This package is discontinued. It has moved here: [https://www.npmjs.com/package/@fils/phy](https://www.npmjs.com/package/@fils/phy)
 
 Verlet Physics Package written in TypeScript. Ported from [FieldKit](https://github.com/marcuswendt/FieldKit.js). This package is based in a CoffeeScript package I used in a few projects while sharing studio and collaborating with [FIELD](https://field.io).
 

@@ -1,4 +1,6 @@
 # @jocabola/ani
+This package is discontinued. It has moved here: [https://www.npmjs.com/package/@fils/ani](https://www.npmjs.com/package/@fils/ani)
+
 Animation Package written in TypeScript.
 
 This is part of a series of packages that I use in my studio for personal and commercial web & [THREEjs](https://threejs.org) based work. It might remain undocumented for a long while but feel free to try it out!

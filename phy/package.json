@@ -1,6 +1,6 @@
 {
   "name": "@jocabola/phy",
-  "version": "0.1.74",
+  "version": "0.1.75",
   "description": "Verlet Physics Package written in TypeScript",
   "main": "lib/main.js",
   "repository": "git@github.com:jocabola/web-packages.git",

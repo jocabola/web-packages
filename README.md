@@ -1,4 +1,6 @@
 # @jocabola/web-packages
+This repo and the related packages are discontinued. The project has moved here: [https://github.com/fil-studio/fils](https://github.com/fil-studio/fils)
+
 This is a repository containing a set of tiny libraries, utilities and wrappers which I use for both my personal work and studio's commercial web & [THREEjs](https://threejs.org) based work.
 
 The libraries are written in TypeScript and all of them are available as individual NPM packages. Some of them are built on top of [ThreeJS](https://threejs.org/) and may have other dependencies.

@@ -1,4 +1,5 @@
 # @jocabola/math
+This package is discontinued. It has moved here: [https://www.npmjs.com/package/@fils/math](https://www.npmjs.com/package/@fils/math)
 
 Math package for jocabola/web. Written in TypeScript.
 

@@ -1,4 +1,5 @@
 # @jocabola/utils
+This package is discontinued. It has moved here: [https://www.npmjs.com/package/@fils/utils](https://www.npmjs.com/package/@fils/utils)
 
 Web Utils Package written in TypeScript. Lightweight Wrapper of useful functions for web dev.
 

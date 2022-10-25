@@ -1,4 +1,5 @@
 # @jocabola/gfx
+This package is discontinued. It has moved here: [https://www.npmjs.com/package/@fils/gfx](https://www.npmjs.com/package/@fils/gfx)
 
 WebGL / GFX Package written in TypeScript.
 

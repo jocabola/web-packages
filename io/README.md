@@ -1,4 +1,5 @@
 # @jocabola/io
+This package is discontinued. It has moved here: [https://www.npmjs.com/package/@fils/io](https://www.npmjs.com/package/@fils/io)
 
 I/O Package written in TypeScript.
 Includes AssetsBundle to handle syncronous preloading of assets for THREEjs projects.

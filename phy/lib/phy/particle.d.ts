@@ -1,11 +1,11 @@
 import { Vec } from "@jocabola/math";
-declare const enum State {
+export declare const enum State {
     ALIVE = 0,
     LOCKED = 1,
     IDLE = 2,
     DEAD = 3
 }
-declare class Particle {
+export declare class Particle {
     id: number;
     age: number;
     lifetime: number;
@@ -26,7 +26,7 @@ declare class Particle {
     copyPosition(v: Vec): void;
     update(): void;
 }
-declare class Spring {
+export declare class Spring {
     a: Particle;
     b: Particle;
     strength: number;
@@ -34,4 +34,3 @@ declare class Spring {
     constructor(a: Particle, b: Particle, strength?: number);
     update(): void;
 }
-export { State, Particle, Spring };

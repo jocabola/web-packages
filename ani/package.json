@@ -1,6 +1,6 @@
 {
 	"name": "@jocabola/ani",
-	"version": "0.0.7",
+	"version": "0.0.7-1",
 	"description": "Animation Package written in TypeScript",
 	"main": "lib/main.js",
 	"repository": "git@github.com:jocabola/web-packages.git",

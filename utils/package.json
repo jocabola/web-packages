@@ -1,6 +1,6 @@
 {
 	"name": "@jocabola/utils",
-	"version": "0.1.89",
+	"version": "0.1.89-1",
 	"description": "Web Utils Package written in TypeScript",
 	"main": "lib/main.js",
 	"repository": "git@github.com:jocabola/web-packages.git",
